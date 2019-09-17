@@ -38,4 +38,10 @@ router.post("/login", passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login"
 }));
+// GET /logout
+router.get('/logout', (req, res, next) => {
+    //as logOut is not a promise but a method no .then
+    req.logOut()
+    res.redirect('/')
+})
 module.exports = router;
