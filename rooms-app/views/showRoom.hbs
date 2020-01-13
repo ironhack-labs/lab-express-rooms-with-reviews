@@ -1,0 +1,10 @@
+<h1>Rooms overview</h1>
+
+<a href="/protected/createRoom">Create new room</a><br><br>
+
+{{#each rooms}}
+  {{name}}
+  <a href="/protected/editRoom/{{this._id}}">Edit room</a>
+  <a href="/protected/deleteRoom/{{this._id}}">Delete room</a>
+  <br>
+{{/each}}
