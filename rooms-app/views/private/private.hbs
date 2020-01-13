@@ -1,0 +1,22 @@
+<body style ="background-color: blue;">
+    <h1 style = "color: red">Welcome to the Room Creator!</h1>
+    <form action="/room" method="post">
+    <div class="form-group">
+        <label for="name">name</label>
+        <input type="text" name="name" id="name" class="form-control" placeholder="Room Name" required>
+
+        <label for="description">room description: </label>
+        <input type="text" name="description" id="description" class="form-control" placeholder="description of the room" required>
+
+        <!--some stuff for Image needed here (multer) -->
+    </div>
+    <button type="submit" class="btn-primary">Create</button>
+    </form>
+      {{#if message}}
+      <p class=" err-message">{{message}}</p>
+      {{/if}}
+
+    <form action="/logout" method="get">
+    <button type="logout" class="btn-primary">Logout</button>
+    </form>
+</body>

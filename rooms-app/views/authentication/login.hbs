@@ -1,0 +1,19 @@
+<div class="container">
+    <form action="/login" method="post">
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="text" name="email" id="email" class="form-control" placeholder="Type your email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Type your password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+      {{#if message}}
+      <p class=" err-message">{{message}}</p>
+      {{/if}}
+    </form>
+    <div class="col-12 text-center">
+      <a href="/">Home</a>
+    </div>
+</div>
