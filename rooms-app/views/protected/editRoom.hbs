@@ -1,14 +1,15 @@
 <h1>Edit a room</h1>
 
-<form id="form" action="/protected/editRoom?id={{room._id}}" method="POST">
+<form id="form" action="/protected/editRoom?id={{room._id}}" method="POST" enctype="multipart/form-data">
     <label for="name">Name</label>
     <input type="text" name="name" value="{{room.name}}" required>
 <br><br>
     <label for="description">Description</label>
     <textarea rows="2" cols="50" name="description" required>{{room.description}}</textarea>
 <br><br>
-    <label for="imageUrl">Image URL</label>
-    <input type="file" name="imageUrl" value="{{room.imageUrl}}">
+{{#compRoomImageUrl room}}
+
+{{/compRoomImageUrl}}
 <br><br>
     <button type="submit">Edit room</button>
   </form>

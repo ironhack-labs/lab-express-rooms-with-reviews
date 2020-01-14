@@ -35,7 +35,7 @@ app.use(cookieParser());
 
 app.use(session({
   secret: "basic-auth-secret",
-  cookie: { maxAge: 60000 },
+  cookie: { maxAge: 600000 },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
     ttl: 24 * 60 * 60 // 1 day
@@ -69,6 +69,21 @@ const auth = require('./routes/auth');
 app.use('/', auth);
 const protect = require('./routes/protected');
 app.use('/', protect);
+
+
+//Helper function for comparing imageUrl for rooms
+hbs.registerHelper('compRoomImageUrl', function( room ){
+  
+  if (room.imageUrl == "default") {
+   return `<label for="imageUrl">Image URL</label>
+    <input type="file" name="imageUrl">`
+  }
+  else {
+    return `<img src="${room.imageUrl}"/><br><br>
+    <label for="imageUrl">Image URL</label>
+    <input type="file" name="imageUrl">`
+  }
+});
 
 
 module.exports = app;
