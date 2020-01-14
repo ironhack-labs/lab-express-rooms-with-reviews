@@ -59,7 +59,7 @@ router.post("/login", (req, res, next) => {
           return res.render("authentication/login", {
             message: "Invalid credentials"
           }); 
-
+        
         req.session.user = foundUser;
         res.redirect("/private");
       });

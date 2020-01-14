@@ -6,8 +6,9 @@ const Room = require("../models/rooms");
 const loginCheck = require("../routes/loginCheck");
 
 router.post('/room', (req, res, next) => {
+    const owner_id = req.session.user._id;
     const {name, description} = req.body;
-    const newRoom = new Room({name, description});
+    const newRoom = new Room({name, description, owner: owner_id});
     Room.findOne({name: name})
     .then(foundRoom => {
         if (foundRoom){
@@ -21,7 +22,7 @@ router.post('/room', (req, res, next) => {
 });
 
 router.get('/rooms', (req, res, next) => {
-    Room.find()
+    Room.find().populate('owner')
     .then(allRooms => {
         console.log(allRooms)
         res.render('private/rooms', {rooms: allRooms});
@@ -35,10 +36,15 @@ router.get('/rooms_edit', (req, res, next) => {
         res.redirect('/rooms');
         return;
     }
-    Room.find()
+
+    Room.find().populate('owner')
     .then(allRooms => {
-        console.log(allRooms)
-        res.render('private/rooms_edit', {rooms: allRooms});
+        for (i=0; i<allRooms.length; i++){
+            allRooms[i].show = (req.session.user._id == allRooms[i].owner._id);
+            console.log("HERE ARE WE", allRooms[i].show);
+        }
+            console.log(allRooms)
+            res.render('private/rooms_edit', {rooms: allRooms});
     })
     .catch(error => {next(error)
     });
@@ -81,7 +87,6 @@ router.post('/rooms_edit/:id/delete', (req, res, next) =>{
     .catch(error => {next(error)}
     );
   });
-
 
 module.exports = router;
 
