@@ -10,8 +10,8 @@
 <div>
     {{#each room.reviews}}
     <p>{{this.comment}}
-    <a href="/protected/editReview/{{room._id}}">Edit review</a>
-    <a href="/protected/deleteReview/{{room._id}}">Delete review</a>
+    <a href="/protected/editReview/{{this._id}}">Edit review</a>
+    <a href="/protected/deleteReview?roomId={{../room._id}}&reviewId={{this._id}}">Delete review</a>
     </p>
     {{/each}}  
     <a href="/protected/addReview/{{room._id}}">Add review</a> 

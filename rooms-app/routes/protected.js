@@ -105,6 +105,8 @@ router.get("/protected/deleteRoom/:id", (req, res, next) => {
             .then((room) => {
                 res.redirect("/rooms");
             })
+
+            //add delete for each reviews._id !!!
         }
     });
 });
@@ -148,6 +150,25 @@ router.post("/protected/addReview/:id", (req,res,next)=>{
         //res.redirect(`/showDetailRoom/${roomId}`)
     })
     .catch(err=>console.log(err))
+})
+
+router.get("/protected/deleteReview", (req, res, next)=>{
+    const roomId=req.query.roomId;
+    const reviewId=req.query.reviewId
+
+    console.log("roomId: " +roomId +" reviewId: " + reviewId)
+
+Review.findById(reviewId)
+    .then(review=>{
+        if ((review)&&(req.session.currentUser._id.toString() === review.user.toString())){
+            Review.deleteOne(reviewId)
+           
+            Room.findOneAndUpdate(roomId,{$pull: {reviews: [reviewId]}} )
+            .then((room) => {
+                res.redirect(`/showDetailRoom/${roomId}`)           
+            }); 
+        }
+    })
 })
 
 
