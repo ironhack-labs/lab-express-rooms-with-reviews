@@ -4,6 +4,7 @@
 
 {{#each rooms}}
   {{name}}
+  <a href="/showDetailRoom/{{this._id}}">Show Details</a>
   <a href="/protected/editRoom/{{this._id}}">Edit room</a>
   <a href="/protected/deleteRoom/{{this._id}}">Delete room</a>
   <br>
