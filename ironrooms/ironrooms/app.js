@@ -36,7 +36,7 @@ const MongoStore = require("connect-mongo")(session);
 
 app.use(session({
   secret: "basic-auth-secret",
-  cookie: { maxAge: 60000 },
+  cookie: { maxAge: 6000000 },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
     ttl: 24 * 60 * 60 // 1 day
@@ -70,6 +70,9 @@ app.use('/', index);
 const router = require('./routes/passport');
 app.use('/', router);
 app.use('/', require('./routes/logged-routes'));
+
+const rooms = require('./routes/rooms');
+app.use('/rooms', rooms)
 
 
 module.exports = app;

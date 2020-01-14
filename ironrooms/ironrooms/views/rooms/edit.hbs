@@ -1,0 +1,19 @@
+<h2>Edit a room</h2>
+<form action="/rooms/{{this.room._id}}" method="POST">
+  <label for="name">Name</label> 
+  <input id="name" type="text" name="name" value="{{this.room.name}}">
+  
+  <label for="description">Description</label> 
+  <input id="description" type="text" name="description" value="{{this.room.description}}">
+  
+  <label for="imageUrl">ImageUrl</label> 
+  <input id="imageUrl" type="image" name="imageUrl" value="{{this.room.imageUrl}}">
+
+  <label for="owner">Owner: {{this.owner.fullName}}</label> 
+
+  <!--<label for="reviews">Reviews</label> 
+  <input id="reviews" type="text" name="reviews" value="{{ room.reviews}}"> -->
+
+  
+  <button type="submit">Update</button>
+</form>
