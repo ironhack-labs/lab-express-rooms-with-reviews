@@ -70,8 +70,7 @@ app.use('/', index);
 const authentication = require('./routes/authentication');
 app.use('/', authentication);
 
-/*
 const room = require('./routes/room');
-app.use('/', room); */
+app.use('/', room);
 
 module.exports = app;

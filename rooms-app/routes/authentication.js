@@ -45,8 +45,10 @@ router.post("/signup", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   const { email, password } = req.body;
+  console.log("request incoming")
   User.findOne({ email })
     .then(foundUser => {
+      console.log(foundUser)
       if (!foundUser)
         return res.render("authentication/signup", {
           message: `${email} not found. Please signup!`

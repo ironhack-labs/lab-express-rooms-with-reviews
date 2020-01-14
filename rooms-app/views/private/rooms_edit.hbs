@@ -1,0 +1,26 @@
+
+    <body style="background-color: yellow">
+    
+    <h1>Site of Rooms!</h1>
+    {{#each rooms}}
+      <h2>{{room.name}}</h2>
+      <p>Name: {{this.name}}</p>
+      <p>Description: {{this.description}}</p>
+      <p>owner: </p>
+<form action="/rooms_edit/{{this._id}}/delete" method="post">
+      <button type="submit">delete</button>
+</form>
+      <form action="/rooms_edit/{{this._id}}/edit" method="post">
+
+        <label for="">Name:</label>
+        <input type="text" name="name" value="{{this.name}}">
+
+        <label for="">Description:</label>
+        <input type="text" name="description" value="{{this.description}}">
+
+        <!--need one more for image here-->
+
+      <button type="submit">done</button>
+    </form>
+{{/each}}
+</body>
