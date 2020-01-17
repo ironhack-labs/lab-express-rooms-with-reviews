@@ -1,0 +1,20 @@
+<form action="/signup" method="post">
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="text" name="email" id="email" class="form-control" placeholder="Add your email here" required>
+
+        <label for="fullname">Full Name:</label>
+        <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Add your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Create your password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Signup</button>
+      {{#if message}}
+      <p class="err-message">{{message}}</p>
+      {{/if}}
+</form>
+<div class="col-12 text-center">
+    <a href="/">Home</a>
+</div>
