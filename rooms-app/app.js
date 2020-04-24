@@ -83,12 +83,13 @@ app.use(flash());
 passport.use(
   new LocalStrategy(
     {
-      //usernameField: email,
-      //passwordField: password,
       passReqToCallback: true,
     },
     (request, username, password, next) => {
-      User.findOne({ username })
+      // passport.js requires parameter 'username' for function
+      // !! with 'email: username' you can define 'email' in model as a dummy 'username'
+      // changing 'username' for 'email' won't work because of passport.js logic
+      User.findOne({ email: username })
         .then((user) => {
           if (!user) {
             return next(null, false, { message: "Incorrect username" });

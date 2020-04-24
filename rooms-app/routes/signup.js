@@ -23,12 +23,12 @@ router.post("/signup", (request, response, next) => {
   // User clicks button in signup.hbs, then POST 'request' gets submitted to
   // app.js, then signup.js, then into this route -> 'request' is object which includes values of input fields
   // destructuring both values:
-  const { username, password, fullName } = request.body;
+  const { email, password, fullName } = request.body;
 
   //**note: handling edge cases for empty fields via 'required' in input tags
 
   // check for existing user, here by 'username'
-  User.findOne({ username: username })
+  User.findOne({ email: email })
     // check returned value, initialized as 'existsAlready', can either be null or !null
     .then((existsAlready) => {
       if (existsAlready != null) {
@@ -40,12 +40,12 @@ router.post("/signup", (request, response, next) => {
 
         // Creating a new user
         // '.create({property1: value1, property2: value2, ...})'
-        User.create({ username: username, password: hash, fullName: fullName })
+        User.create({ email: email, password: hash, fullName: fullName })
           // after new user is created, redirect to Login page with data:
           .then((user) => {
             // ', {user}'-object is passed on to '/login' page, redirecting to '/login' GET route
             console.log("Successful sign up!");
-            response.redirect("/login"); //
+            response.redirect("/login"); // , {user});
           })
           .catch((error) => {
             console.log("Something went wrong at /Signup/: ", error);

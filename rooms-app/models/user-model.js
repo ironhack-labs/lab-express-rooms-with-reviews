@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 // 'schema': blueprint for object model
 const userSchema = new Schema(
   {
-    username: String,
+    email: String,
     password: String,
     fullName: String,
     //Bonus: slackID: String
