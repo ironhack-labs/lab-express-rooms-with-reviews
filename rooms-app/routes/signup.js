@@ -23,12 +23,12 @@ router.post("/signup", (request, response, next) => {
   // User clicks button in signup.hbs, then POST 'request' gets submitted to
   // app.js, then signup.js, then into this route -> 'request' is object which includes values of input fields
   // destructuring both values:
-  const { email, password, fullName } = request.body;
+  const { username, password, fullName } = request.body;
 
   //**note: handling edge cases for empty fields via 'required' in input tags
 
-  // check for existing user, here by 'email'
-  User.findOne({ email: email })
+  // check for existing user, here by 'username'
+  User.findOne({ username: username })
     // check returned value, initialized as 'existsAlready', can either be null or !null
     .then((existsAlready) => {
       if (existsAlready != null) {
@@ -40,7 +40,7 @@ router.post("/signup", (request, response, next) => {
 
         // Creating a new user
         // '.create({property1: value1, property2: value2, ...})'
-        User.create({ email: email, password: hash, fullName: fullName })
+        User.create({ username: username, password: hash, fullName: fullName })
           // after new user is created, redirect to Login page with data:
           .then((user) => {
             // ', {user}'-object is passed on to '/login' page, redirecting to '/login' GET route
