@@ -56,8 +56,10 @@ app.use(cookieParser());
 app.use(
   session({
     // refer to '.env' for actual secret
-    secret: "test",
+    secret: process.env.PASSPORT_LOCAL_SECRET,
+    // 'resave' forces session to be saved back to the session store
     resave: true,
+    // 'saveUninitialized' = saving a session which is new but not modified
     saveUninitialized: true,
   })
 );
@@ -78,26 +80,29 @@ passport.deserializeUser((id, next) => {
     });
 });
 
-// integrate error handling with 'flash' into 'passport'
+// integrate error handling with 'flash'
 app.use(flash());
+
+// define passport 'Strategy': local
+// 'Strategy' = authentication mechanism
 passport.use(
   new LocalStrategy(
     {
-      passReqToCallback: true,
+      passReqToCallback: true, // enable connect-flash messages
     },
     (request, username, password, next) => {
-      // passport.js requires parameter 'username' for function
-      // !! with 'email: username' you can define 'email' in model as a dummy 'username'
-      // changing 'username' for 'email' won't work because of passport.js logic
+      // passport.js requires parameter 'username' explicitly for function call
+      // !! with 'email: username' you can define 'email' in user-model as a dummy 'username'
+      // changing 'username' into 'email' won't work because of passport.js logic
       User.findOne({ email: username })
-        .then((user) => {
-          if (!user) {
-            return next(null, false, { message: "Incorrect username" });
+        .then((found) => {
+          if (!found) {
+            return next(null, false, { message: "Incorrect e-mail" });
           }
-          if (!bcrypt.compareSync(password, user.password)) {
+          if (!bcrypt.compareSync(password, found.password)) {
             return next(null, false, { message: "Incorrect password" });
           }
-          return next(null, user);
+          return next(null, found);
         })
         .catch((error) => {
           console.log(error);
@@ -138,7 +143,7 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 app.locals.title = "Express - Generated with IronGenerator";
 
 //// Routing:
-// read: "if you visit http://localhost:3000/, then show routes/index.hbs"
+// read: "if you visit http://localhost:3000/, then consider routes/index.js"
 const index = require("./routes/index");
 app.use("/", index);
 
@@ -147,6 +152,9 @@ app.use("/", signup);
 
 const login = require("./routes/login");
 app.use("/", login);
+
+const roomCrud = require("./routes/room-crud");
+app.use("/", roomCrud);
 
 // export to make 'app'-logic available to other scripts in this web application
 module.exports = app;
