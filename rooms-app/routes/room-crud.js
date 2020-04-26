@@ -52,4 +52,37 @@ router.post(
   }
 );
 
+router.get(
+  "/delete-room/:id",
+  ensureLogin.ensureLoggedIn(),
+  (request, response, next) => {
+    // console.log(request.user.id); // Object ID of logged-in user
+    // console.log(request.params.id); // Object ID of room
+
+    // read: "find the 'Room' where i just clicked 'Delete', then check
+    // if the 'room.owner' equals the one who is logged in.
+    // if 'true': delete this room and redirect to route '/room-list'"
+    Room.findById({ _id: request.params.id })
+      .then((room) => {
+        // console.log(room);
+        if (request.user.id == room.owner) {
+          console.log("match!");
+          Room.findByIdAndDelete({ _id: request.params.id })
+            .then((success) => {
+              console.log("success deleting");
+              response.redirect("/room-list");
+            })
+            .catch((error) => {
+              console.log(error);
+              next();
+            });
+        }
+      })
+      .catch((error) => {
+        console.log("Error at /delete room/: ", error);
+        next();
+      });
+  }
+);
+
 module.exports = router;
