@@ -2,12 +2,19 @@ const express = require("express");
 const router = express.Router();
 const ensureLogin = require("connect-ensure-login");
 const Room = require("../models/room-model");
+const User = require("../models/user-model");
+
+router.get("/room-list", async (request, response) => {
+  // '.populate' for resolving user model data in 'owner' field
+  // ', "fullName"' to only retrieve fullName data from user model:
+  const allRooms = await Room.find({}).populate("owner", "fullName");
+  response.render("../views/room-crud/list-rooms", { allRooms });
+});
 
 router.get(
   "/room-crud/create-room",
   ensureLogin.ensureLoggedIn(),
   (request, response) => {
-    //console.log("got it");
     //console.log(request.user);
     response.render("../views/room-crud/create-room", { user: request.user });
   }
@@ -28,11 +35,12 @@ router.post(
         Room.create({
           name: roomName,
           description: roomDescription,
-          image: roomImage,
+          imageUrl: roomImage,
+          // assign ObjectID of logged in 'user' to the created room
           owner: request.user,
         })
           .then((room) => {
-            console.log("Successfully created a new room!");
+            console.log("Successfully created a new room: ", room);
             response.redirect("/private"); // , {room});
           })
           .catch((error) => {

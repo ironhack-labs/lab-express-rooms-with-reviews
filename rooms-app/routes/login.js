@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const passport = require("passport");
-//const User = require("../models/user-model");
+const Room = require("../models/room-model");
 
 // package for generating protected routes
 // knows that passport is used for authentication and builds on that
@@ -60,8 +60,44 @@ router.get("/logout", (request, response) => {
   response.redirect("/");
 });
 
-router.get("/private", ensureLogin.ensureLoggedIn(), (request, response) => {
-  response.render("private", { user: request.user });
-});
+// backup:
+// router.get("/private", ensureLogin.ensureLoggedIn(), (request, response) => {
+//   response.render("private");
+// });
+
+// re-written as asynchronous to test functionality
+// 'console.log(roomsByUser)' would not work without async:
+router.get(
+  "/private",
+  ensureLogin.ensureLoggedIn(),
+  async (request, response, next) => {
+    // start async-block: (see comments in findRoom() for non-async-version)
+    const roomsByUser = await findRoom(request.user.id);
+    console.log("Rooms for this user: ", roomsByUser);
+    // end async-block
+
+    // as soon as looged in 'user' views private section, all corresponding rooms get listed:
+    response.render("private", { rooms: roomsByUser });
+  }
+);
+
+function findRoom(userId) {
+  try {
+    return Room.find({ owner: userId }).exec();
+  } catch (error) {
+    return "Error in findRoom";
+  }
+
+  // start non-async-block:
+  // Room.find({ owner: request.user.id })
+  //   .then((found) => {
+  //     //console.log(found);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //     next();
+  //   });
+  // end non-async-block
+}
 
 module.exports = router;
