@@ -140,7 +140,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // default value for title local
-app.locals.title = "Express - Generated with IronGenerator";
+app.locals.title = "IronRooms - Generated with IronGenerator";
 
 //// Routing:
 // read: "if you visit http://localhost:3000/, then consider routes/index.js"
@@ -155,6 +155,9 @@ app.use("/", login);
 
 const roomCrud = require("./routes/room-crud");
 app.use("/", roomCrud);
+
+const reviewCrud = require("./routes/review-crud");
+app.use("/", reviewCrud);
 
 // export to make 'app'-logic available to other scripts in this web application
 module.exports = app;

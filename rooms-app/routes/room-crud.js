@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const ensureLogin = require("connect-ensure-login");
 const Room = require("../models/room-model");
-const User = require("../models/user-model");
+const Review = require("../models/review-model");
 
 router.get("/room-list", async (request, response) => {
   // '.populate' for resolving user model data in 'owner' field
@@ -114,6 +114,7 @@ router.get(
   }
 );
 
+// same logic as for 'delete room'
 router.post(
   "/room-crud/edit-room/:id",
   ensureLogin.ensureLoggedIn(),
@@ -125,6 +126,8 @@ router.post(
           console.log("match!");
 
           const { roomName, roomDescription, roomImage } = request.body;
+          // assign values of input fields to the Room properties
+          // '{new: true}' to return updated object
           Room.update(
             { _id: request.params.id },
             {
@@ -155,5 +158,10 @@ router.post(
       });
   }
 );
+
+router.get("/room-crud/show-reviews/:id", async (request, response) => {
+  // to be continued:
+  response.render("../views/room-crud/show-reviews");
+});
 
 module.exports = router;

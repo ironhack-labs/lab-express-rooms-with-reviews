@@ -4,10 +4,16 @@
 <p>Description: {{description}}</p>
 <p>Image: {{imageUrl}}</p>
 <p>Owner: {{owner.fullName}}</p>
+<p>Reviews: </p>
+<a href="/room-crud/show-reviews/{{_id}}">Show reviews</a>
 <a href="/room-crud/edit-room/{{_id}}">Edit</a>
 <a href="/room-crud/delete-room/{{_id}}">Delete</a>
+<a href="/review-crud/add-review/{{_id}}">Add review</a>
 {{#if message}}
 <div class="error-message">{{ message }}</div>
 {{/if}}
 <br><br>
 {{/each}}
+<br><br>
+<a href="/">Back to main</a>
+<a href="/logout">Log out</a>

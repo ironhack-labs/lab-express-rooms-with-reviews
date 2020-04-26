@@ -1,0 +1,13 @@
+<h1>Add a review</h1>
+<p>Room id: {{roomId}}</p>
+<form action="/review-crud/add-review/{{roomId}}" method="POST">
+    <label for="review">Review:</label>
+    <textarea type="text" name="review"></textarea>
+    <button type="submit">Add</button>
+</form>
+{{#if message}}
+<div class="error-message">{{ message }}</div>
+{{/if}}
+<br><br>
+<a href="/">Back to main</a>
+<a href="/logout">Log out</a>

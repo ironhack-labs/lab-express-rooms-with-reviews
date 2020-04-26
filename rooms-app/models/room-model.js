@@ -10,7 +10,7 @@ const roomSchema = new Schema(
     // 'ref: "user"' links to the user-model.js:
     // "user" in roomSchema is matching the NAME in the 'mongoose.model(NAME, _schema)' in the user-model.js
     owner: { type: Schema.Types.ObjectId, ref: "user" },
-    reviews: [], // updated later
+    reviews: [{ type: Schema.Types.ObjectId, ref: "review" }],
   },
   {
     timestamps: true,
