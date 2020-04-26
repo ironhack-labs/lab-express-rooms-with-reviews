@@ -53,7 +53,7 @@ router.post(
 );
 
 router.get(
-  "/delete-room/:id",
+  "/room-crud/delete-room/:id",
   ensureLogin.ensureLoggedIn(),
   (request, response, next) => {
     // console.log(request.user.id); // Object ID of logged-in user
@@ -76,10 +76,81 @@ router.get(
               console.log(error);
               next();
             });
+        } else {
+          response.render("../views/room-crud/list-rooms", {
+            message: "You are not allowed to do that.",
+          });
         }
       })
       .catch((error) => {
         console.log("Error at /delete room/: ", error);
+        next();
+      });
+  }
+);
+
+router.get(
+  "/room-crud/edit-room/:id",
+  ensureLogin.ensureLoggedIn(),
+  (request, response, next) => {
+    Room.findById({ _id: request.params.id })
+      .then((room) => {
+        // console.log(room);
+        if (request.user.id == room.owner) {
+          console.log("match!");
+          response.render("../views/room-crud/edit-room", {
+            roomId: request.params.id,
+          });
+        } else {
+          response.render("../views/room-crud/list-rooms", {
+            message: "You are not allowed to do that.",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log("Error at /editing room/: ", error);
+        next();
+      });
+  }
+);
+
+router.post(
+  "/room-crud/edit-room/:id",
+  ensureLogin.ensureLoggedIn(),
+  (request, response, next) => {
+    Room.findById({ _id: request.params.id })
+      .then((room) => {
+        // console.log(room);
+        if (request.user.id == room.owner) {
+          console.log("match!");
+
+          const { roomName, roomDescription, roomImage } = request.body;
+          Room.update(
+            { _id: request.params.id },
+            {
+              $set: {
+                name: roomName,
+                description: roomDescription,
+                imageUrl: roomImage,
+              },
+            },
+            { new: true }
+          )
+            .then((room) => {
+              response.redirect("/room-list");
+            })
+            .catch((error) => {
+              console.log(error);
+              next();
+            });
+        } else {
+          response.render("../views/room-crud/list-rooms", {
+            message: "You are not allowed to do that.",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log("Error at /editing room/: ", error);
         next();
       });
   }

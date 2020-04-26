@@ -4,6 +4,10 @@
 <p>Description: {{description}}</p>
 <p>Image: {{imageUrl}}</p>
 <p>Owner: {{owner.fullName}}</p>
-<a href="/delete-room/{{_id}}">Delete</a>
+<a href="/room-crud/edit-room/{{_id}}">Edit</a>
+<a href="/room-crud/delete-room/{{_id}}">Delete</a>
+{{#if message}}
+<div class="error-message">{{ message }}</div>
+{{/if}}
 <br><br>
 {{/each}}

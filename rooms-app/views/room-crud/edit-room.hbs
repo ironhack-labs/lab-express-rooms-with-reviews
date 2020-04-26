@@ -1,0 +1,17 @@
+<h1>Edit room</h1>
+<p>room ID: {{roomId}}</p>
+<form action="/room-crud/edit-room/{{roomId}}" method="POST">
+    <label for="roomName">Room name: </label>
+    <input type="text" name="roomName">
+    <label for="roomDescription">Description: </label>
+    <input type="text" name="roomDescription">
+    <label for="roomImage">Image URL: </label>
+    <input type="text" name="roomImage">
+    <button type="submit">Submit changes</button>
+</form>
+{{#if message}}
+<div class="error-message">{{ message }}</div>
+{{/if}}
+<br><br>
+<a href="/">Back to main</a>
+<a href="/logout">Log out</a>
