@@ -1,0 +1,7 @@
+{{#each roomsList}}
+<img src="{{imageUrl}}" alt="{{name}}" height="150" width="200">
+<p><a href="/rooms/{{_id}}">{{name}}</a></p>
+<p>{{description}}</p>
+<p>by {{owner.fullName}}</p>
+
+{{/each}}

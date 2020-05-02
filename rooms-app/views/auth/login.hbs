@@ -1,0 +1,18 @@
+<form id="form" action="/auth/login" method="POST">
+
+  <label for="username">Username</label>
+  <input type="text" name="username" />
+
+  <label for="password">Password</label>
+  <input type="password" name="password" />
+
+  {{#if errorMessage}}
+    <div class="error-message">{{errorMessage}}</div>
+  {{/if}}
+<br /><hr>
+  <button type="submit">Log in</button>
+</form>
+<br /><hr>
+<a href="http://localhost:3000/auth/google">Login via Google</a>
+<br /><hr>
+<a href="/">Home</a>

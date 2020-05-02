@@ -1,0 +1,20 @@
+<form id="form" action="/auth/signup" method="POST">
+
+  <label for="email">E-Mail</label>
+  <input type="text" name="email" />
+
+  <label for="password">Password</label>
+  <input type="password" name="password" /></br><hr>
+
+  <label for="fullName">Full Name</label>
+  <input type="text" name="fullName" /></br><hr>
+
+  {{#if message}}
+  <div class="error-message">{{message}}</div>
+  {{/if}}
+
+  <button type="submit">Sign up</button>
+</form>
+</br><hr>
+
+<a href="/">Home</a>
