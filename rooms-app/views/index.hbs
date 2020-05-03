@@ -3,11 +3,12 @@
 
 </br>
 {{#unless user}}
-<a href="/auth/signup">Signup |</a><a href="/auth/login"> Login</a>
-<a href="/rooms">See rooms</a>
+<a href="/auth/signup">Signup</a>
+<a href="/auth/login"> Login</a>
+<a href="/rooms">View rooms</a>
 {{else}}
 <a href="/rooms/add">Add a room</a>
-<a href="/rooms">See rooms</a>
+<a href="/rooms">View rooms</a>
 <a href="/private">Private</a>
 <a href="/auth/logout">Logout</a>
 {{/unless}}
