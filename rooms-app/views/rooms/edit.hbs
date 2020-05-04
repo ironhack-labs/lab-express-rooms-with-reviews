@@ -1,0 +1,24 @@
+<h1>Edit Room {{{ room.name }}}</h1>
+
+<div class="nav">
+
+
+<a href="/">Home </a> <a href="/rooms">Rooms</a>
+
+</div>
+<hr>
+<img src="{{room.imageUrl}}" alt="{{room.name}}" height="200" width="300">
+<hr>
+<form action="/rooms/edit/{{_id}}" method="post">
+  
+   <label for="name"> Name: </label>
+    <input type="text" name="name" id="name" value="{{room.name}}">
+    <label for="description"> Description: </label>
+    <input type="text" name="description" id="description" value="{{room.description}}">
+    <br><br>
+    <label for="imageUrl"> Image Url: </label>
+    <input type="text" name="imageUrl" id="imageUrl" value="{{room.imageUrl}}">
+   
+  <button type="submit"> EDIT </button>
+</form>
+

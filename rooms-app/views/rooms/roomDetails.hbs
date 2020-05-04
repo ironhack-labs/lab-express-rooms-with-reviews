@@ -2,9 +2,20 @@
 
 {{#each room}}
 <h1>Room Details {{name}}</h1>
+
+<div class="nav">
+
+<a href="/">Home </a> <a href="/rooms">Rooms</a>
+
+</div>
+
+<hr>
+
 <img src="{{imageUrl}}" alt="{{name}}" height="300" width="400">
 
 <p>{{description}}</p>
 <p>by {{owner.fullName}}</p>
+
+<hr>
 
 {{/each}}

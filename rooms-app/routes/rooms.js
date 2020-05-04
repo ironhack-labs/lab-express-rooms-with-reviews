@@ -7,12 +7,13 @@ router.get("/add", (req, res) => {
 });
 
 router.get("/", (req, res, next) => {
+  const user = req.user;
   // show all rooms
   Room.find({})
     // populate to access the name from the user in the referenced Mongo DB table
     .populate("owner", "fullName")
     .then((rooms) => {
-      res.render("rooms/index", { roomsList: rooms });
+      res.render("rooms/index", { roomsList: rooms, user: user });
     })
     .catch((err) => {
       next(err);
@@ -51,6 +52,8 @@ router.post("/", (req, res, next) => {
       next(err);
     });
 });
+
+// Details Room
 
 router.get("/:roomId/", (req, res, next) => {
   // show detail Room
@@ -91,19 +94,44 @@ router.get("/delete/:roomId/", (req, res, next) => {
 //     query.owner = req.user._id;
 //   }
 
-// that is the long version of what is happening
-// if user.role !== 'admin'
-// query: { _id: req.params.roomId, owner: req.user._id }
-// else if user.role === 'admin'
-// query; { _id: req.params.roomId }
+// Edit Room
 
-// Room.findOneAndDelete(query)
-//   .then(() => {
-//     res.redirect("/rooms");
-//   })
-//   .catch((err) => {
-//     next(err);
-//   });
-// });
+router.get("/edit/:roomId/", (req, res, next) => {
+  const roomQueryEdit = { _id: req.params.roomId };
+
+  if (req.isAuthenticated()) {
+    Room.findOne(roomQueryEdit)
+      .then((room) => {
+        res.render("rooms/edit", { room });
+      })
+      .catch((err) => {
+        next(err);
+      });
+  }
+});
+
+router.post("/edit/:roomId/", (req, res, next) => {
+  const { name, description, imageUrl } = req.body;
+
+  if (!req.isAuthenticated()) {
+    Room.update(
+      { _id: req.params.roomId },
+      {
+        $set: {
+          name: name,
+          description: description,
+          imageUrl: imageUrl,
+        },
+      },
+      { new: true }
+    )
+      .then((room) => {
+        res.redirect("/rooms");
+      })
+      .catch((err) => {
+        next(err);
+      });
+  }
+});
 
 module.exports = router;

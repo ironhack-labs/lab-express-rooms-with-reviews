@@ -1,3 +1,5 @@
+<h1> Dashboard {{#if user}}{{user.fullName}}{{/if}}</h1>
+
 <div class="nav">
 
 <a href="/">Home</a>
@@ -9,16 +11,28 @@
 <div class="rooms">
 
 {{#each roomsList}}
+
+
+
 <img src="{{imageUrl}}" alt="{{name}}" height="150" width="200">
 <p><a href="/rooms/{{_id}}">{{name}}</a></p>
 <p>{{description}}</p>
 <p>by {{owner.fullName}}</p>
 
-<div class="delete">
-<a href="/rooms/delete/{{_id}}">Delete</a>
+
+{{!-- We need the ../ to be able to access the user outside the each loop
+Hide the buttons if the user is not logged --}}
+
+{{#if ../user}}
+<div class="edit-delete-bt">
+<a href="/rooms/delete/{{_id}}">Delete </a><a href="/rooms/edit/{{_id}}"> Edit</a>
 </div>
 <br>
+{{/if}}
 
-{{/each}}
+
+
+
+{{/each}} 
 
 </div>
