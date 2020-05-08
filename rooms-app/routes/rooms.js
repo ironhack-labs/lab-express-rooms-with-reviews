@@ -110,10 +110,11 @@ router.get("/edit/:roomId/", (req, res, next) => {
   }
 });
 
-router.post("/edit/:roomId/", (req, res, next) => {
+router.post("/edit/:roomId/update", (req, res, next) => {
   const { name, description, imageUrl } = req.body;
 
-  if (!req.isAuthenticated()) {
+  if (req.isAuthenticated()) {
+    // console.log("UPDATED!");
     Room.update(
       { _id: req.params.roomId },
       {

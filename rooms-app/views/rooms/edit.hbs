@@ -9,7 +9,7 @@
 <hr>
 <img src="{{room.imageUrl}}" alt="{{room.name}}" height="200" width="300">
 <hr>
-<form action="/rooms/edit/{{_id}}" method="post">
+<form action="{{room._id}}/update" method="post">
   
    <label for="name"> Name: </label>
     <input type="text" name="name" id="name" value="{{room.name}}">
