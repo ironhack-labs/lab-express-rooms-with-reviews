@@ -7,7 +7,7 @@ const userSchema = new Schema(
     password: String,
     fullName: String,
     // google login - optional
-    googleID: String,
+    // googleID: String,
     role: {
       type: String,
       enum: ["admin", "user"],

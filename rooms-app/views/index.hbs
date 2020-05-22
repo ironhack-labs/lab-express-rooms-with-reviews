@@ -1,14 +1,29 @@
-<h1>{{title}}</h1>
-<p>Welcome {{#if user}}{{user.fullName}}{{/if}}</p>
+<h2 class="text-center my-4">{{title}}</h1>
+<h4>Welcome {{#if user}}{{user.fullName}}{{/if}}</h4>
 
 </br>
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+  <div class="container">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 {{#unless user}}
-<a href="/auth/signup">Signup</a>
-<a href="/auth/login"> Login</a>
-<a href="/rooms">View rooms</a>
+<li class="nav-item">
+<a class="navbar-brand" href="/auth/signup">Signup</a></li>
+<li class="nav-item">
+<a class="navbar-brand" href="/auth/login"> Login</a></li>
+<li class="nav-item">
+<a class="navbar-brand" href="/rooms">View rooms</a></li>
 {{else}}
-<a href="/rooms/add">Add a room</a>
-<a href="/rooms">View rooms</a>
-<a href="/private">Private</a>
-<a href="/auth/logout">Logout</a>
+<li class="nav-item">
+<a class="navbar-brand" href="/rooms/add">Add a room</a></li>
+<li class="nav-item">
+<a class="navbar-brand" href="/rooms">View rooms</a></li>
+<li class="nav-item">
+<a class="navbar-brand" href="/private">Private</a></li>
+<li class="nav-item">
+<a class="navbar-brand" href="/auth/logout">Logout</a></li>
 {{/unless}}
+
+    </ul>
+  </div>
+</nav>
+

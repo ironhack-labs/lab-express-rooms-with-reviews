@@ -1,10 +1,23 @@
 
-<h1>Private page</h1>
+<h1>Private page {{#if user}}{{user.fullName}}{{/if}}</h1>
 
 {{!-- To implement later - the name of the logged user - do a route
 <p>Dashboard -  {{user.fullName}}</p> --}}
 
-<a href="/">Home</a>
-<a href="/rooms/add">Add a room</a>
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+  <div class="container">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+    <a class="navbar-brand" href="/">Home</a>
+    </li>
 
-<a href="/logout">Log out</a> 
+    </ul>
+  </div>
+</nav>
+
+<div class="alert alert-success my-5" role="alert">
+  <h4 class="alert-heading">Your Private Area!</h4>
+  <p>Aww yeah, you successfully arrived to you own private area</p>
+  <hr>
+  <p class="mb-0">This is only available for you and just you! </p>
+</div>

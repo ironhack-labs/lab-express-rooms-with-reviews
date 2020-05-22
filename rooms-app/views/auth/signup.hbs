@@ -1,20 +1,47 @@
-<form id="form" action="/auth/signup" method="POST">
+<h2 class="text-center my-4">Sign up </h2>
 
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+  <div class="container">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+    <a class="navbar-brand" href="/">Home</a>
+    </li>
+
+    </ul>
+  </div>
+</nav>
+
+<div class="rounded border-dark my-5 customform">
+<form id="form" action="/auth/signup" method="POST">
+  <div class="form-group">
   <label for="email">E-Mail</label>
   <input type="text" name="email" />
-
+  </div>
+<div class="form-group">
   <label for="password">Password</label>
-  <input type="password" name="password" /></br><hr>
-
+  <input type="password" name="password" />
+</div>
+<div class="form-group">
   <label for="fullName">Full Name</label>
-  <input type="text" name="fullName" /></br><hr>
-
-  {{#if message}}
-  <div class="error-message">{{message}}</div>
+  <input type="text" name="fullName" />
+  </div>
+  {{#if errorMessage}}
+    <div class="error-message">{{errorMessage}}</div>
   {{/if}}
+    
+<div class="form-group">
 
-  <button type="submit">Sign up</button>
+
+  <button type="submit" class="btn btn-primary">Sign up</button>
+</div>
+    </div>
 </form>
-</br><hr>
 
-<a href="/">Home</a>
+</div>
+
+
+
+
+
+
+

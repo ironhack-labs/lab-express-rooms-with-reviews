@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Room = require("../models/Room");
+const Review = require("../models/Review");
 
 router.get("/add", (req, res) => {
   res.render("rooms/add");
@@ -18,17 +19,6 @@ router.get("/", (req, res, next) => {
     .catch((err) => {
       next(err);
     });
-
-  // just show the rooms of the logged in user
-  /*
-  Room.find({ owner: req.user._id })
-    .then(rooms => {
-      res.render('rooms/index', { roomsList: rooms });
-    })
-    .catch(err => {
-      next(err);
-    });
-    */
 });
 
 router.post("/", (req, res, next) => {
@@ -87,22 +77,19 @@ router.get("/delete/:roomId/", (req, res, next) => {
   }
 });
 
-// router.get("/:roomId/", (req, res, next) => {
-//   const query = { _id: req.params.roomId };
-
-//   if (req.user.role !== "admin") {
-//     query.owner = req.user._id;
-//   }
-
-// Edit Room
-
 router.get("/edit/:roomId/", (req, res, next) => {
   const roomQueryEdit = { _id: req.params.roomId };
 
   if (req.isAuthenticated()) {
     Room.findOne(roomQueryEdit)
       .then((room) => {
-        res.render("rooms/edit", { room });
+        if (req.user.id == room.owner) {
+          console.log("match!");
+
+          res.render("rooms/edit", { room });
+        } else {
+          console.log("you are not allowed to edit this room");
+        }
       })
       .catch((err) => {
         next(err);
@@ -126,6 +113,56 @@ router.post("/edit/:roomId/update", (req, res, next) => {
       },
       { new: true }
     )
+      .then((room) => {
+        res.redirect("/rooms");
+      })
+      .catch((err) => {
+        next(err);
+      });
+  }
+});
+
+// Add review
+
+router.get("/add-review/:roomId/", (req, res, next) => {
+  const roomQueryEdit = { _id: req.params.roomId };
+
+  if (req.isAuthenticated()) {
+    Room.findOne(roomQueryEdit)
+      .then((room) => {
+        if (req.user.id != room.owner) {
+          console.log("match!");
+
+          res.render("rooms/addRev", { room });
+        } else {
+          console.log("you are not allowed to add reviews to this room");
+        }
+      })
+      .catch((err) => {
+        next(err);
+      });
+  }
+});
+
+router.post("/add-review/:roomId/", (req, res, next) => {
+  const { review, user, comments } = req.body;
+
+  if (req.isAuthenticated()) {
+    // console.log("UPDATED!");
+    Review.create({
+      user: req.user.fullName,
+      comment: comments,
+    });
+
+    console.log(res.data);
+    Room.findByIdAndUpdate(
+      req.params.roomId,
+      {
+        $push: { reviews: { user: user, comments: comments } },
+      },
+      { new: true }
+    )
+
       .then((room) => {
         res.redirect("/rooms");
       })
