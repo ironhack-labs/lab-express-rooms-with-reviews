@@ -1,0 +1,27 @@
+{{#if userInSession}}
+<h1>Bienvendo{{userInSession.fullName}}</h1>
+<a class="btn btn-primary" href="/rooms">crear cuartos</a>
+
+{{/if}}
+<a class="btn btn-primary" href="/viewRooms">Ver cuartos</a>
+{{#unless userInSession}}
+<h2>Sign-up here</h2>
+<div class="container">
+    <div class="row  justify-content-center">
+        <div class="col-2">
+        <form action="/login" method="POST">
+        <label for="input-email">Email: </label>
+        <input required type="email" name="email" placeholder="Your email"/>
+
+        <label for="input-password">Password: </label>
+        <input required type="password" name="password" id="input-password" placeholder="********"/>
+
+        <button class="btn btn-warning" type="submit">LOGIN!</button>
+    </form>
+    {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+    {{/if}}
+        </div>
+    </div>
+</div>
+{{/unless}}

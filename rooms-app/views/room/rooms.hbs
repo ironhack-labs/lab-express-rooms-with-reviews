@@ -1,0 +1,54 @@
+{{#if userInSession}}
+<h1>Bienvendo : {{userInSession.fullName}} haz cuaartos haz m,uchops muchos cuartos</h1>
+
+<a href="/viewRooms"></a>
+<div class="container">
+    <div class="row  justify-content-center">
+        <div class="col-2">
+        <form action="/createRoom" method="POST">
+
+        <label for="input-email">name</label>
+        <input required  name="name" placeholder="nombre"/>
+
+        <label for="input-email">description</label>
+        <input required  name="description" placeholder="Description"/>
+
+        <label for="input-email">imageUrl</label>
+        <input required  name="imageUrl" placeholder="url de imagen"/>
+
+
+        <button class="btn btn-warning" type="submit">Crear nuevo cuarto</button>
+    </form>
+  
+        </div>
+    </div>
+</div>
+
+{{/if}}
+<a class="btn btn-primary" href="/viewRooms">Ver cuartos</a>
+{{#unless userInSession}}
+
+
+
+<h2>Si quieres añadir cuartos registrate o inicia sesión</h2>
+<div class="container">
+    <div class="row  justify-content-center">
+        <div class="col-2">
+        <form action="/login" method="POST">
+   
+        <label for="input-email">Email: </label>
+        <input required type="email" name="email" placeholder="Your email"/>
+
+        <label for="input-password">Password: </label>
+        <input required type="password" name="password" id="input-password" placeholder="********"/>
+
+        <button class="btn btn-warning" type="submit">LOGIN!</button>
+    </form>
+    {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+    {{/if}}
+        </div>
+    </div>
+      <a class="btn btn-primary" href="/signup">Registro</a>
+</div>
+{{/unless}}
