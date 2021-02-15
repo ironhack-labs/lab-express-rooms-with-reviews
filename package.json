@@ -1,0 +1,23 @@
+{
+  "name": "lab-express-rooms-with-reviews",
+  "version": "1.0.0",
+  "description": "![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darrnz/lab-express-rooms-with-reviews.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darrnz/lab-express-rooms-with-reviews/issues"
+  },
+  "homepage": "https://github.com/darrnz/lab-express-rooms-with-reviews#readme",
+  "dependencies": {
+    "connect-mongo": "^3.2.0",
+    "express-session": "^1.17.1"
+  }
+}
