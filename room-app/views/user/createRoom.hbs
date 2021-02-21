@@ -1,0 +1,21 @@
+<h1>ROOM CREATION </h1>
+
+{{#if valueCookie}}
+
+  <form action="/create-room" method="POST">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name">
+
+    <label for="description">description</label>
+    <input type="text" name="description" id="description">
+
+    <label for="imageUrl">Image URL</label>
+    <input type="text" name="imageUrl" id="imageUrl">
+    <div>
+      <input style='display:none' value='{{valueCookie._id}}' type="text" name="ownerID" id="ownerID">
+    </div>
+
+  <button type="submit">Create room</button>
+  </form>
+
+{{/if}}

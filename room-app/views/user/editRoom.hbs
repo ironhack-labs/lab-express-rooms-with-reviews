@@ -1,0 +1,22 @@
+<h1>ROOM EDITION </h1>
+
+{{#if valueCookie}}
+
+  <form action="/user-rooms/{{roomToEdit.id}}/edit" method="POST">
+    <label for="name">Name</label>
+    <input type="text" name="name" value='{{roomToEdit.name}}' id="name">
+
+    <label for="description">description</label>
+    <input type="text" name="description"  value='{{roomToEdit.description}}' id="description">
+
+    <label for="imageUrl">Image URL</label>
+    <input type="text" name="imageUrl"  value='{{roomToEdit.imageUrl}}' id="imageUrl">
+
+    <div>
+      <input style='display:none' value='{{valueCookie._id}}' type="text" name="ownerID" id="ownerID">
+    </div>
+
+  <button type="submit">Edit room</button>
+  </form>
+
+{{/if}}

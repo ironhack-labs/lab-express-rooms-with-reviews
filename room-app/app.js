@@ -33,11 +33,11 @@ app.use(cookieParser());
 
 // Express View engine setup
 
-app.use(require('node-sass-middleware')({
+/*app.use(require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   sourceMap: true
-}));
+}));*/
       
 
 app.set('views', path.join(__dirname, 'views'));
@@ -53,13 +53,14 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 const index = require('./routes/index');
+const auth = require('./routes/auth.route');
 const room = require('./routes/room.route');
-const review = require('./routes/review.route');
-const user = require('./routes/users.route');
+//const review = require('./routes/review.route');
+//const user = require('./routes/users.route');
 app.use('/', index);
 app.use('/', room);
-app.use('/', review);
-app.use('/', user);
-
+//app.use('/', review);
+//app.use('/', user);
+app.use('/', auth);
 
 module.exports = app;

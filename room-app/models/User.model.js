@@ -5,16 +5,19 @@ const {Schema,model} = require('mongoose')
 const userSchema = new Schema(
   {
     email: {
-      type: String,
-        required:true},
-  password: {type:String,
-            required:true},
-  fullName: {type:String,
-            required:true},
-  // slack login - optional
-  //slackID: String,
-  // google login - optional
-  //googleID: String
+            type: String,
+            required:true
+        },
+    passwordHash: {
+            type:String,
+            required:true
+        },
+
+
+    //slackID: String,
+  
+    //googleID: String
+    
 }, {
   timestamps: true
 });
