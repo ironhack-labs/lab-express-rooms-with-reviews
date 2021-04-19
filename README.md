@@ -15,17 +15,17 @@ The app needs to have users (signup, login, logout functionality) and full CRUD 
 
 ### Iteration 0 | Create the project
 
-Once more, let's use our friend `ironhack_generator` and create a new app.
+Once more, let's use our friend `ironlauncher` and create a new app.
 
 ```bash
-$ irongenerate rooms-app
+$ ironlauncher rooms-app
 $ cd rooms-app
 $ npm run dev
 ```
 
 ## Iteration #1: The Signup & Login & Logout Features
 
-Our app will have users, and they will use `email` and `password` to authenticate themselves. They will also have to input their full name when signing in. In addition to this way, please feel free to use any  of the social strategies (this is bonus feature).
+Our app will have users, and they will use `email` and `password` to authenticate themselves. They will also have to input their full name when signing in. In addition to this way, please feel free to use any of the social strategies (this is bonus feature).
 
 So your user schema should look somewhat like this:
 ```js
@@ -42,9 +42,15 @@ const userSchema = new Schema({
 });
 ```
 
-Now create all the routes and views needed to have users successfully signup/login/logout. We suggest using `passport.js` and its local strategy for the mandatory part of this iteration.
+Now create all the routes and views needed to have users successfully signup/login/logout. For auth you can use `passport.js` and its local strategy or the `sessions & cookies` setup.
 
-💡 Make sure you install all the packages: *bcrypt*, *passport*, *passport-local*, and if you have social login: *passport-google-oauth* and/or *passport-slack*.
+💡 Make sure you install all the packages: 
+
+For `passport.js`: *bcrypt*, *passport*, *passport-local*,
+
+For `sessions & cookies`: *bcryptjs*, *express-session*, *connect-mongo*.
+
+And if you have `social login`: *passport-google-oauth* and/or *passport-slack*.
 
 **Hint**: You have already everything set up in the previous lessons + class examples, be resourceful 🥳.
 
