@@ -1,0 +1,30 @@
+<div class="center">
+    <h1>lista de Room</h1>
+</div>
+{{#if error}}
+<div class="error">
+    {{error}}
+</div>
+{{/if}}
+
+<div class="row mt-5" style="display: flex; justify-content:space-around ;">
+    {{#each room}}
+    <div class="card mt-5" style="width: 18rem;">
+        <img src="{{imageUrl}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{name}}</h5>
+            <p class="card-text">{{description}}</p>
+            <div class="layout">
+                <a href="/rom/{{_id}}/edit" style="font-size: 20px;">Editar</a>
+
+
+                <a href="/rom/{{_id}}/delete" style="font-size: 20px; margin-left: 20%;">Eliminar</a>
+
+            </div>
+        </div>
+    </div>
+
+
+    {{/each}}
+
+</div>
