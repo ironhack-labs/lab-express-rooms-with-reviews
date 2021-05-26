@@ -26,7 +26,13 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
+require('./configs/session.config')(app);
+require('./configs/db.config');
 
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.session.currentUser;
+  next();
+});
 
 // Middleware Setup
 app.use(logger('dev'));
@@ -38,6 +44,11 @@ app.use(cookieParser());
 
 // Express View engine setup
 
+app.use(require('node-sass-middleware-5')({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  sourceMap: true
+}));
 
 
 app.set('views', path.join(__dirname, 'views'));
