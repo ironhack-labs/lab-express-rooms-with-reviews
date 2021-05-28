@@ -1,0 +1,26 @@
+<a class="btn btn-primary" href="/rooms">crear cuartos</a>
+<div class="container">
+    <div class="row justify-content-around">
+    {{#each roomDB}}
+    <img class="card-img-top" src="{{imageUrl}}" alt="">
+    <div class="col-md-3" style="margin-bottom: 20px;">
+    <h5 class="card-title">{{description}}</h5>
+    <div class="card-body">
+    <p>{{name}}</p>
+    <p>{{owner}}</p>
+    {{#each reviews}}
+      <p>{{this}}</p>
+    {{/each}}
+    </div>
+  </div>
+</div>
+<a href="/deleteRoom/{{_id}}">borrar esta cosa</a>
+{{/each}}
+</div>
+
+
+
+
+
+
+
