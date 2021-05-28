@@ -1,0 +1,16 @@
+<h2>Edit</h2>
+<h2>{{message}}</h2>
+{{#if room}}
+<form action="/rooms/edit/{{room.id}}" method="POST">
+  <label for="name-input">Name:</label>
+  <input type="text" name="name" id="name-input" value="{{room.name}}" />
+
+  <label for="description-input">Description:</label>
+  ​<textarea name="description" id="description-input" rows="4" cols="40">{{room.description}}</textarea>
+
+  <label for="image-input">Image URL:</label>
+  <input type="text" name="imageUrl" id="image-input" value="{{room.imageUrl}}" />
+
+  <button type="submit">Save Changes</button>
+</form>
+{{/if}}
