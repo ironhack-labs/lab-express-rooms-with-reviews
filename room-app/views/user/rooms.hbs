@@ -1,0 +1,40 @@
+<h1>Welcome to the rooms section</h1>
+
+
+
+{{#each activeRooms}}
+<div style="border: solid;">
+  <p>{{this.name}}</p>
+  <p>{{this.description}}</p>
+  <p>{{this.owner.email}}</p>
+ <h6>Los comentarios</h6>
+    {{#each this.reviews}}
+     
+      <p>{{this.comment}}<p>
+     {{/each}} 
+
+    <form action="/user-rooms/{{this._id}}/add-review" method="POST">
+       <input style='display:none' value='{{this.owner.id}}' type="text" name="ownerID" id="ownerID">
+        <input style='display:none' value='{{this._id}}' type="text" name="roomID" id="roomID">
+      <input type="text" name="comment" id="comment" placeholder="add a comment">
+    <button type="submit">Add review</button></form>
+  
+
+      
+      <a href="/user-rooms/{{this._id}}/edit">Edit</a>
+      <form action="/user-rooms/{{this._id}}/edit" method="POST"><button type="submit">Delete</button> </form>
+
+  
+</div>
+<div>
+
+  
+</div>
+    
+{{/each}}
+
+{{#if valueCookie}}
+  <a href="/create-room">Create room</a>
+{{/if}}
+
+
