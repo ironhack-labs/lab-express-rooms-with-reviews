@@ -1,0 +1,21 @@
+<h2>Details</h2>
+<div>
+    <h5>{{oneroom.name}}</h5>
+    <img src="{{oneroom.imageUrl}}">
+    <p>{{oneroom.description}}</p>
+    {{#each oneroom.reviews}}
+    <div>
+        <h4>{{this.comment}}</h5>
+        <p>by {{this.user.fullName}}</p>
+        <br>
+    </div>
+    {{/each}}
+    <form action="/rooms/review/{{oneroom.id}}" method="POST">
+        <label for="review-input">Review:</label>
+        ​<textarea name="comment" id="review-input" rows="4" cols="50">Write your Review Here</textarea>
+    <button type="submit">Submit</button>
+    </form>
+    <p>{{message}}</p>
+    <a href="/rooms/">Go back</a>
+    <br>
+</div>
