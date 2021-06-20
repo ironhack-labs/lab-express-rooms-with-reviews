@@ -1,0 +1,57 @@
+
+
+{{#each room}}
+
+<h2 class="text-center my-4">Room Details {{name}}</h2>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+    <a class="navbar-brand" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+    <a class="navbar-brand" href="/rooms">Rooms</a>
+    </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+  <div class="card cardRoom my-4">
+    <img src="{{imageUrl}}" class="card-img-top" alt="{{name}}">
+    <div class="card-body">
+      <h5 class="card-title">by {{owner.fullName}}</h5>
+      <p class="card-text">{{description}}</p>
+<hr></hr>
+        {{!-- List the reviews --}}
+<h5 class="card-title">Reviews</h5>
+{{#if reviews}}
+<div class="card-columns">
+{{#each reviews}}
+<div class="card">
+  <p class="card-text p-3">{{comments}}</p>
+  <small class="text-muted my-2 p-3">by {{user}}</small>
+  </div>
+{{/each}}
+</div>
+{{else}}
+<p>No reviews yet</p>
+{{/if}}
+    </div>
+ 
+
+ </div>
+
+
+
+
+
+
+{{/each}}
+
+
+
+
+

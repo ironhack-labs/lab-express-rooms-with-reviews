@@ -1,0 +1,35 @@
+<h2 class="text-center my-4">Edit Room {{{ room.name }}}</h2>
+
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+  <div class="container">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+    <a class="navbar-brand" href="/">Home</a>
+    </li>
+
+    </ul>
+  </div>
+</nav>
+
+
+
+  <div class="card cardRoom my-4">
+    <img src="{{room.imageUrl}}"class="card-img-top" alt="{{room.name}}" >
+    <div class="card-body">
+<form action="{{room._id}}/update" method="post">
+  
+   <label for="name"> Name: </label>
+    <input type="text" name="name" id="name" value="{{room.name}}">
+    <label for="description"> Description: </label>
+    <textarea type="text" name="description" id="description" value="{{room.description}}"></textarea>
+    <br><br>
+    <label for="imageUrl"> Image Url: </label>
+    <input type="text" name="imageUrl" id="imageUrl" value="{{room.imageUrl}}">
+   
+  <button class="btn btn-primary" type="submit"> EDIT </button>
+</form>
+    </div>
+  </div>
+
+
+

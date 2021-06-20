@@ -1,0 +1,36 @@
+<h2 class="text-center my-4">Log in </h2>
+
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+  <div class="container">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+    <a class="navbar-brand" href="/">Home</a>
+    </li>
+
+    </ul>
+  </div>
+</nav>
+
+<div class="rounded border-dark my-5 customform">
+<form id="form"  action="/auth/login" method="POST">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" name="username" />
+  </div>
+<div class="form-group">
+  <label for="password">Password</label>
+  <input type="password" name="password" />
+</div>
+  {{#if errorMessage}}
+    <div class="error-message">{{errorMessage}}</div>
+  {{/if}}
+    
+<div class="form-group">
+
+
+  <button type="submit" class="btn btn-primary">Log in</button>
+</div>
+    </div>
+</form>
+
+</div>
