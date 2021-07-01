@@ -1,0 +1,18 @@
+<h1>Sign up</h1>
+<form action="/signup" method="POST">
+  <label for="email">E-Mail: </label>
+  <input type="text" name="email" id="email" required>
+  <label for="password">Password: </label>
+  <input type="password" name="password" id="password" required>
+  <label for="fullName">Full name: </label>
+  <input type="text" name="fullName" id="fullName" required>
+  <button type="submit">Sign up</button>
+</form>
+<a href="/login">Already have an account? Login</a>
+{{#if message}}
+<div class="error-message">{{ message }}</div>
+{{/if}}
+<a href="/">Back to main</a>
+
+<!-- label 'for' attribute matches to input 'id' attribute -->
+<!-- input 'name' attribute is referenced by the 'request' -->

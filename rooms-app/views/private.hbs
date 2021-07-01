@@ -1,0 +1,13 @@
+<h1>Private page</h1>
+<p>Good job so far!</p>
+<p> Your rooms: </p>
+{{#each rooms}}
+<div class="room">
+    <p>Name: {{name}}</p>
+    <p>Description: {{description}}</p>
+    <p>Image: {{imageUrl}}</p>
+</div>
+{{/each}}
+<a href="/room-crud/create-room">Create a new room</a>
+<a href="/">Back to main</a>
+<a href="/logout">Log out</a>
