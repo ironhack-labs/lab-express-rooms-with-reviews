@@ -1,0 +1,12 @@
+Rooms
+
+{{#each rooms}}
+    <h2>{{this.name}}</h2>
+    <a href="/rooms/{{this._id}}">See details</a>
+    <form action="/rooms/{{this._id}}/delete" method="POST">
+    <button type="submit">Delete</button>
+    </form>
+    <a href="/rooms/{{this._id}}/edit">Edit</a>
+{{/each}}
+
+<a href="/rooms/new">Add new room</a>
