@@ -1,0 +1,32 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+nav{
+  background-color: skyblue;
+}
+
+nav a{
+  text-decoration: none;
+  color: black;
+}
+
+nav a:hover{
+  font-size: larger;
+  font-weight: bolder;
+  color: whitesmoke;
+  text-shadow: 1px 1px black;
+}

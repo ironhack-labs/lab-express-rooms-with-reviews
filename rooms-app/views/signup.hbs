@@ -1,0 +1,20 @@
+<h1>Signup</h1>
+
+<form id="form" action="/signup" method="POST">
+    <label for="email">Email-Address</label>
+    <input type="email" name="email" placeholder="your-email@something.com" required>
+<br><br>
+    <label for="password">Password</label>
+    <input id="myPassword" type="password" name="password" placeholder="********" value="" required>
+    <!--input id="myPassword" type="password" name="" value=""-->
+<br><br>
+    <label for="username">Username</label>
+    <input type="text" name="username" placeholder="Your full username" required>
+<br><br>
+    <button type="submit">Create account</button>
+  </form>
+<br>
+  {{#if errorMessage}}
+    <div class="error-message">{{ errorMessage }}</div>
+  {{/if}}
+

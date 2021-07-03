@@ -1,0 +1,18 @@
+<h1>Room Detail</h1>
+
+<h2>{{room.name}}</h2>
+
+
+<img src="{{room.imageUrl}}"/>
+
+<p>{{room.description}}</p>
+
+<div>
+    {{#each room.reviews}}
+    <p>{{this.comment}}
+    <a href="/protected/editReview/{{this._id}}">Edit review</a>
+    <a href="/protected/deleteReview?roomId={{../room._id}}&reviewId={{this._id}}">Delete review</a>
+    </p>
+    {{/each}}  
+    <a href="/protected/addReview/{{room._id}}">Add review</a> 
+</div>

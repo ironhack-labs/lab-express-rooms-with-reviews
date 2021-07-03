@@ -1,0 +1,14 @@
+<h1>Add Review</h1>
+
+<form id="form" action="/protected/addReview/{{room._id}}" method="POST" >
+    <p>{{room.name}}</p>
+   
+<br><br>
+    <label for="comment">Description</label>
+    <textarea rows="2" cols="50" name="comment" required></textarea>
+
+    <button type="submit">Add review</button>
+  </form>
+<br>
+
+ 

@@ -1,0 +1,22 @@
+<h1>Add a new room</h1>
+
+<form id="form" action="/protected/createRoom" method="POST" enctype="multipart/form-data">
+    <label for="name">Name</label>
+    <input type="text" name="name" required>
+<br><br>
+    <label for="description">Description</label>
+    <textarea rows="2" cols="50" name="description" required></textarea>
+<br><br>
+
+        
+        <label for="imageUrl">Image URL</label>
+        <input type="file" name="imageUrl">
+  
+<br><br>
+    <button type="submit">Create Room</button>
+  </form>
+<br>
+
+  {{#if errorMessage}}
+    <div class="error-message">{{ errorMessage }}</div>
+  {{/if}}
