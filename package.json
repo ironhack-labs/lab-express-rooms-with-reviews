@@ -1,0 +1,23 @@
+{
+  "name": "ironrooms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node .bin/wwww",
+    "dev": "nodemon -e css,hbs,js,json .bin/wwww"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "hbs": "^4.1.2",
+    "mongoose": "^5.13.2",
+    "morgan": "^1.10.0",
+    "serve-favicon": "^2.5.0"
+  }
+}
