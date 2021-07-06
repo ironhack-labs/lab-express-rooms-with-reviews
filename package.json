@@ -1,0 +1,37 @@
+{
+  "name": "lab-express-rooms-with-reviews",
+  "version": "1.0.0",
+  "description": "![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon -e hbs,css,js app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shirley-gianina/lab-express-rooms-with-reviews.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shirley-gianina/lab-express-rooms-with-reviews/issues"
+  },
+  "homepage": "https://github.com/shirley-gianina/lab-express-rooms-with-reviews#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.4.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "hbs": "^4.1.2",
+    "mongoose": "^5.13.1",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "cloudinary": "^1.26.1",
+    "multer": "^1.4.2",
+    "multer-storage-cloudinary": "^4.0.0",
+    "passport-google-oauth": "^2.0.0"
+  }
+}
