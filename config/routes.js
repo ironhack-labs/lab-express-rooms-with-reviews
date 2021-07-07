@@ -49,3 +49,9 @@ router.post("/rooms/:id/delete", miscController.deleteRoom);
 router.get("/rooms/:id", miscController.idRoom);
 
 module.exports = router;
+
+router.get('/', miscController.index);
+
+router.get("/activate/:token", authController.activate);
+
+module.exports = router;

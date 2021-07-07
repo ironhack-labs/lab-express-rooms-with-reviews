@@ -64,6 +64,7 @@ passport.use(
                 email,
                 password: mongoose.Types.ObjectId(),
                 googleID: googleID,
+                active: true,
               };
 
               if (photo) {

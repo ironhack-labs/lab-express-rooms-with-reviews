@@ -29,6 +29,21 @@ const userSchema = new mongoose.Schema(
     googleID: {
       type: String,
     },
+    activationToken: {
+      type: String,
+      default: () => {
+        return (
+          Math.random().toString(36).substring(7) +
+          Math.random().toString(36).substring(7) +
+          Math.random().toString(36).substring(7) +
+          Math.random().toString(36).substring(7)
+        );
+      },
+    },
+    active: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

@@ -1,6 +1,7 @@
 const User = require("../models/User.model");
 const mongoose = require("mongoose");
 const passport = require("passport");
+const { sendActivationEmail } = require("../config/mailer.config");
 
 module.exports.register = (req, res, next) => {
   res.render("auth/register");
@@ -16,7 +17,8 @@ module.exports.doRegister = (req, res, next) => {
         }
 
         User.create(req.body)
-          .then(() => {
+          .then((newUser) => {
+            sendActivationEmail(newUser.email, newUser.activationToken);
             res.redirect("/");
           })
           .catch((e) => {
@@ -81,4 +83,22 @@ module.exports.doLoginGoogle = (req, res, next) => {
 module.exports.logout = (req, res, next) => {
   req.logout();
   res.redirect("/");
+};
+
+module.exports.activate = (req, res, next) => {
+  User.findOneAndUpdate(
+    { activationToken: req.params.token, active: false },
+    { active: true }
+  )
+    .then((user) => {
+      if (user) {
+        res.render("auth/login", {
+          user: { email: user.email },
+          message: "You have activated your account. Now, you can log in",
+        });
+      } else {
+        res.redirect("/");
+      }
+    })
+    .catch((e) => next(e));
 };
