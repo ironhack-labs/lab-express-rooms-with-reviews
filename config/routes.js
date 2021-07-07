@@ -2,8 +2,15 @@ const router = require("express").Router();
 const passport = require("passport");
 const miscController = require("../controllers/misc.controller");
 const authController = require("../controllers/auth.controller");
+
+const authMiddleware = require("../middlewares/auth.middleware");
+
 // const multer = require('multer')
 // const upload = multer({ dest: "./public/uploads/" });
+
+// authMiddleware.isNotAuthenticated
+// authMiddleware.isAuthenticated
+
 const upload = require("./storage.config");
 
 const GOOGLE_SCOPES = [
@@ -26,5 +33,19 @@ router.get(
 );
 router.get("/auth/google/callback", authController.doLoginGoogle);
 router.post("/logout", authController.logout);
+
+router.get("/profile", authMiddleware.isAuthenticated, miscController.profile)
+
+router.get("/rooms", authMiddleware.isAuthenticated, miscController.rooms);
+
+router.get("/rooms/create", miscController.createRoom);
+router.post("/rooms/create", miscController.doCreateRoom);
+
+router.get("/rooms/:id/edit", miscController.editRoom);
+router.post("/rooms/:id/edit", miscController.doEditRoom);
+
+router.post("/rooms/:id/delete", miscController.deleteRoom);
+
+router.get("/rooms/:id", miscController.idRoom);
 
 module.exports = router;
