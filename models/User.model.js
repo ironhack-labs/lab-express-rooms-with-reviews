@@ -15,16 +15,18 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       match: [EMAIL_PATTERN, "Email is invalid"],
     },
-    fullName: {
-      type: String,
-      required: [true, "Full Name is required"],
-    },
     password: {
       type: String,
       required: [true, "Password is required"],
       minlength: [8, "Password is too short"],
     },
+    fullName: {
+      type: String,
+    },
     image: {
+      type: String,
+    },
+    googleID: {
       type: String,
     },
   },

@@ -11,6 +11,15 @@
     {{/if}}
   </div>
   <div class="mb-3">
+    <label for="fullName" class="form-label">Full Name</label>
+    <input name="fullName" value="{{user.fullName}}" type="fullName" class="form-control {{#if errors.fullName}}is-invalid{{/if}}" id="fullName" required>
+    {{#if errors.fullName}}
+      <div class="invalid-feedback">
+        {{errors.fullName}}
+      </div>
+    {{/if}}
+  </div>
+  <div class="mb-3">
     <label for="formFile" class="form-label">Select file</label>
     <input name="image" class="form-control" type="file" id="formFile">
   </div>

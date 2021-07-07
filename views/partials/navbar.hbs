@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="/">Emosi2Dona2</a>
+    <a class="navbar-brand" href="/">IRONLABS</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -14,22 +14,30 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="/register"
-            tabindex="-1"
-            aria-disabled="true"
-          >Register</a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="/login"
-            tabindex="-1"
-            aria-disabled="true"
-          >Log in</a>
-        </li>
+        {{#if currentUser}}
+          <li class="nav-item">
+            <form action="/logout" method="POST">
+              <button class="nav-link btn btn-link">Logout</button>
+            </form>
+          </li>
+        {{else}}
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="/register"
+              tabindex="-1"
+              aria-disabled="true"
+            >Register</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="/login"
+              tabindex="-1"
+              aria-disabled="true"
+            >Log in</a>
+          </li>
+        {{/if}}
       </ul>
     </div>
   </div>

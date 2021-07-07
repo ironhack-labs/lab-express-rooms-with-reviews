@@ -12,7 +12,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "ironhack/lab-express-rooms-with-reviews",
+    folder: "ironhack/lab-expresss-rooms-with-reviews",
     allowedFormats: ["jpg", "png"],
   },
 });

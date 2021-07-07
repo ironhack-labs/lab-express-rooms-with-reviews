@@ -1,4 +1,6 @@
 <h1>lab-express-rooms-with-reviews</h1>
 
-<p>{{currentUser.email}}</p>
-<p>{{currentUser.fullName}}</p>
+{{#if currentUser}}
+  <p>{{currentUser.email}}</p>
+  <img src="{{currentUser.image}}" alt="" />
+{{/if}}

@@ -10,6 +10,11 @@ module.exports.doRegister = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
+        if (req.file) {
+          req.body.image = req.file.path;
+          // req.body.image = `/uploads/${req.file.filename}`;
+        }
+
         User.create(req.body)
           .then(() => {
             res.redirect("/");
@@ -40,7 +45,7 @@ module.exports.doLogin = (req, res, next) => {
     if (error) {
       next(error);
     } else if (!user) {
-      res.render("auth/login", {
+      res.status(400).render("auth/login", {
         user: req.body,
         errorMessage: validations.error,
       });
@@ -54,4 +59,26 @@ module.exports.doLogin = (req, res, next) => {
       });
     }
   })(req, res, next);
+};
+
+module.exports.doLoginGoogle = (req, res, next) => {
+  passport.authenticate("google-auth", (error, user, validations) => {
+    if (error) {
+      next(error);
+    } else if (!user) {
+      res
+        .status(400)
+        .render("auth/login", { user: req.body, error: validations });
+    } else {
+      req.login(user, (loginErr) => {
+        if (loginErr) next(loginErr);
+        else res.redirect("/");
+      });
+    }
+  })(req, res, next);
+};
+
+module.exports.logout = (req, res, next) => {
+  req.logout();
+  res.redirect("/");
 };

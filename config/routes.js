@@ -1,10 +1,15 @@
 const router = require("express").Router();
-
+const passport = require("passport");
 const miscController = require("../controllers/misc.controller");
 const authController = require("../controllers/auth.controller");
+// const multer = require('multer')
+// const upload = multer({ dest: "./public/uploads/" });
+const upload = require("./storage.config");
 
-const multer = require("multer");
-const upload = multer({ dest: "./public/uploads/" });
+const GOOGLE_SCOPES = [
+  "https://www.googleapis.com/auth/userinfo.email",
+  "https://www.googleapis.com/auth/userinfo.profile",
+];
 
 router.get("/", miscController.index);
 
@@ -15,5 +20,11 @@ router.post("/register", upload.single("image"), authController.doRegister);
 // Login
 router.get("/login", authController.login);
 router.post("/login", authController.doLogin);
+router.get(
+  "/auth/google",
+  passport.authenticate("google-auth", { scope: GOOGLE_SCOPES })
+);
+router.get("/auth/google/callback", authController.doLoginGoogle);
+router.post("/logout", authController.logout);
 
 module.exports = router;
