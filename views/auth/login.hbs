@@ -1,7 +1,7 @@
 <div class="container mt-5">
-  <h1 class="mb-3">Sign Up</h1>
+  <h1 class="mb-3">Login</h1>
   <div class="col-6">
-    <form action="/auth/signup" method="POST">
+    <form action="/auth/login" method="POST">
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="{{email}}" required>
@@ -9,10 +9,6 @@
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input type="password" name="password" class="form-control" id="password" required>
-      </div>
-      <div class="mb-3">
-        <label for="fullname" class="form-label">Full Name</label>
-        <input type="text" name="fullname" class="form-control" id="fullname" value="{{fullname}}" required>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>

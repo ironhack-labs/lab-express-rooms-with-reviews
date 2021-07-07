@@ -1,3 +1,6 @@
+//require authentification middleware
+const isAuth = require("../../middlewares/auth.middleware")
+
 // require user controller
 const authController = require("../../controllers/auth.controller")
 
@@ -11,8 +14,18 @@ const router = new Router();
 // User model
 const User = require('../../models/User.model');
 
-router.get('/', authController.signUp);
+router.get('/signup', authController.signUp);
 
-router.post('/', authController.doSignUp);
+router.post('/signup', authController.doSignUp);
+
+router.get('/login', authController.login);
+
+router.post('/login', authController.doLogin);
+
+router.get('/logout', authController.logout);
+
+router.get("/protectedroute", isAuth, (req, res, next) => {
+  res.send("Your are authenticated, congrats!")
+})
 
 module.exports = router;

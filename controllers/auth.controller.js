@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
+const passport = require("passport")
+
 const User = require("../models/User.model");
 
 module.exports.signUp = (req, res, next) => {
@@ -49,4 +51,17 @@ module.exports.doSignUp = (req, res, next) => {
         .catch(err => next(err));
     })
     .catch(err => next(err));
+}
+
+
+module.exports.login = (req, res, next) => {
+  res.render("auth/login")
+}
+
+
+module.exports.doLogin = ('localAuth', passport.authenticate('localAuth', { failureRedirect: '/auth/login', successRedirect: '/' }));
+
+module.exports.logout = (req, res) => {
+  req.logout();
+  res.redirect("/")
 }
