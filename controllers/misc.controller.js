@@ -1,3 +1,5 @@
+const router = require("express").Router();
+
 const Room = require("../models/Room.model");
 
 module.exports.index = (req, res, next) => {
@@ -17,7 +19,7 @@ module.exports.rooms = (req, res, next) => {
 };
 
 module.exports.createRoom = (req, res, next) => {
-  res.render("movies/new-room");
+  res.render("rooms/new-room");
 };
 
 module.exports.doCreateRoom = (req, res, next) => {
@@ -31,9 +33,10 @@ module.exports.doCreateRoom = (req, res, next) => {
 module.exports.idRoom = (req, res, next) => {
   const { id } = req.params;
   Room.findById(id)
-    .populate("cast")
+    //.populate("cast")
     .then((room) => {
-      res.render("rooms/room-details", { room });
+      console.log(room)
+      res.render("rooms/room-details", { room: room });
     })
     .catch(next);
 };
@@ -41,7 +44,7 @@ module.exports.idRoom = (req, res, next) => {
 module.exports.editRoom = (req, res, next) => {
   Room.findById(req.params.id)
     .then((room) => {
-      res.render(`rooms/edit-room`, { room });
+      res.render(`rooms/edit-room`, { room: room });
     })
     .catch(next);
 };

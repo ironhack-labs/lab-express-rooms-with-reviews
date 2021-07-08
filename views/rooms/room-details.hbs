@@ -4,28 +4,29 @@
 <div class="d-flex flex-row justify-content-center px-5">
   <div class="card px-2 border-0" style="width: 500px;">
     <img
-      src="https://media.istockphoto.com/photos/cinema-objects-picture-id184151977"
+      src={{room.imageUrl}}
       class="card-img-top img-fluid d-flex mx-auto"
       style="height: 175px;width:350px"
       alt="..."
     />
     <div class="card-body">
-      <h5 class="card-title"><u><strong>Title: </strong></u> {{room.title}}</h5>
-      <h5 class="card-title"><u><strong>Genre: <strong></u> {{room.genre}}</h5>
-      <h5 class="card-title"><u><strong>Plot: <strong></u> {{room.plot}}</h5>
-      <h5 class="card-title"><u><strong>cast: <strong></u></h5>
-      {{#each cast}}
-        <p>{{this.name}}, {{this.occupation}} - "{{this.catchPhrase}}"</p>        
-      {{/each}}
+      <h5 class="card-title"><strong>Name:</strong> {{room.name}}</h5>
+      <h5 class="card-title"><strong>Description:</strong>
+        {{room.description}}</h5>
+      <h5 class="card-title"><strong>Owner:</strong> {{room.owner}}</h5>
+      {{!-- <h5 class="card-title"><u><strong>Reviews: <strong></u></h5>
+      {{#each reviews as |review|}}
+        <p>{{review.name}}, {{review.occupation}} - "{{review.catchPhrase}}"</p>        
+      {{/each}} --}}
       <div class="d-flex flex-column">
         <a
-          href="/rooms/{{id}}/edit"
+          href="/rooms/{{room.id}}/edit"
           class="btn btn-primary p-1 mt-1"
           role="button"
         >Edit</a>
         <a>
           <form
-            action="/rooms/{{id}}/delete"
+            action="/rooms/{{room.id}}/delete"
             method="POST"
             class="d-flex flex-column pt-1"
           >

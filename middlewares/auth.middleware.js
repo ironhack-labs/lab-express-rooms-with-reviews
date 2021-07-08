@@ -7,8 +7,9 @@ module.exports.isAuthenticated = (req, res, next) => {
 };
 
 module.exports.isNotAuthenticated = (req, res, next) => {
-  if (req.isNotAuthenticated()) {
-  } else {
+  if (req.isAuthenticated()) {
     res.redirect("/profile");
+  } else {
+    next();
   }
 };

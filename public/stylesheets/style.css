@@ -2,7 +2,7 @@ body {
   margin: 0px;
   padding: 0px;
   font-family: "Pokemon Hollow";
-  background-color: rgb(177, 156, 156);
+  background-color: rgb(185, 223, 176);
 }
 
 a {
@@ -18,5 +18,5 @@ a {
 }
 
 h5 {
-  font-size: 35px;
+  font-size: 20px;
 }
