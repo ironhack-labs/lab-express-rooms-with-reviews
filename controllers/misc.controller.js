@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const passport = require("passport");
 
 const Room = require("../models/Room.model");
 
@@ -23,8 +24,15 @@ module.exports.createRoom = (req, res, next) => {
 };
 
 module.exports.doCreateRoom = (req, res, next) => {
-  Room.create(req.body)
+  const data = {
+    name: req.body.name,
+    imageUrl: req.body.imageUrl,
+    description: req.body.description,
+    owner: req.user.email,
+  };
+  Room.create(data)
     .then((room) => {
+      console.log(room);
       res.redirect("/rooms");
     })
     .catch((e) => res.render("rooms/new-room"));
@@ -35,16 +43,21 @@ module.exports.idRoom = (req, res, next) => {
   Room.findById(id)
     //.populate("cast")
     .then((room) => {
-      console.log(room)
+      console.log(room);
       res.render("rooms/room-details", { room: room });
     })
     .catch(next);
 };
 
 module.exports.editRoom = (req, res, next) => {
-  Room.findById(req.params.id)
+  const { id } = req.params;
+  Room.findById(id)
     .then((room) => {
-      res.render(`rooms/edit-room`, { room: room });
+      if (room.owner == req.user.email) {
+        res.render(`rooms/edit-room`, { room: room });
+      } else {
+        res.redirect(`/rooms/${id}`);
+      }
     })
     .catch(next);
 };
@@ -59,7 +72,17 @@ module.exports.doEditRoom = (req, res, next) => {
 
 module.exports.deleteRoom = (req, res, next) => {
   const { id } = req.params;
-  Room.findByIdAndDelete(id)
-    .then((room) => res.redirect(`/rooms`))
+  Room.findById(id)
+    .then((room) => {
+      if (room.owner == req.user.email) {
+        Room.findByIdAndDelete(id)
+          .then((room) => {
+            res.redirect(`/rooms`);
+          })
+          .catch(next);
+      } else {
+        res.redirect(`/rooms/${id}`);
+      }
+    })
     .catch(next);
 };

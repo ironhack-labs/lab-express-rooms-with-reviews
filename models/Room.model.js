@@ -11,8 +11,9 @@ const roomSchema = new mongoose.Schema({
     type: String,
   },
   owner: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: "User",
+    type: String,
+    // type: mongoose.SchemaTypes.ObjectId,
+    // ref: "User",
   },
   reviews: [], // we will update this field a bit later when we create review model
 });

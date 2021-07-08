@@ -18,14 +18,6 @@
       <label for="imageUrl" class="fw-bolder">IMAGE URL:</label>
       <input type="text" class="form-control" id="imageUrl" name="imageUrl" />
     </div>
-    <div class="my-3 align-items-center">
-      <label for="user">OWNER:</label>
-      <select name="owner" id="owner">
-        {{#each users as |user|}}
-          <option value={{user.id}} style="width: 200px;">{{user.name}}</option>
-        {{/each}}
-      </select>
-    </div>
 
     <button type="submit" class="btn btn-primary">ADD</button>
 
