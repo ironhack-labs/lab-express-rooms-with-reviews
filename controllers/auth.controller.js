@@ -59,7 +59,7 @@ module.exports.login = (req, res, next) => {
 }
 
 
-module.exports.doLogin = ('localAuth', passport.authenticate('localAuth', { failureRedirect: '/auth/login', successRedirect: '/' }));
+module.exports.doLogin = ('localAuth', passport.authenticate('localAuth', { failureRedirect: '/auth/login', successRedirect: '/auth/myprofile' }));
 
 module.exports.logout = (req, res) => {
   req.logout();

@@ -14,6 +14,8 @@ const router = new Router();
 // User model
 const User = require('../../models/User.model');
 
+const profileController = require("../../controllers/profile.controller")
+
 router.get('/signup', authController.signUp);
 
 router.post('/signup', authController.doSignUp);
@@ -24,8 +26,6 @@ router.post('/login', authController.doLogin);
 
 router.get('/logout', authController.logout);
 
-router.get("/protectedroute", isAuth, (req, res, next) => {
-  res.send("Your are authenticated, congrats!")
-})
+router.get("/myprofile", isAuth, profileController.showProfile)
 
 module.exports = router;
