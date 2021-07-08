@@ -25,5 +25,23 @@ const userSchema = new mongoose.Schema(
     }
   );
 
+  //Encriptar contraseña
+  userSchema.pre('save', function(next) {
+    if (this.isModified('password')) {
+      bcrypt.hash(this.password, SALT_ROUNDS)
+      .then((hash) => {
+        this.password = hash;
+        next();
+      })
+    } else {
+      next();
+    }
+  })
+
+  // Comparar la contraseña introducida para ver si es la misma
+  userSchema.methods.checkPassword = function(passwordToCheck) {
+    return bcrypt.compare(passwordToCheck, this.password)
+  }
+
   const User = mongoose.model('User', userSchema);
   module.exports = User;

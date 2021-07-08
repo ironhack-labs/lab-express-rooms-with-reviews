@@ -11,7 +11,7 @@ require("./config/db.config");
 
 const app = express();
 
-// require("./config/session.config")(app);
+require("./config/session.config")(app);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
@@ -22,11 +22,11 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
 
-app.use((req, res, next) => {
-  res.locals.currentUser = req.user;
+// app.use((req, res, next) => {
+//   res.locals.currentUser = req.user;
 
-  next()
-})
+//   next()
+// })
 
 // Routes
 const routes = require("./config/routes");
