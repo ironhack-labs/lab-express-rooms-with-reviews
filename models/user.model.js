@@ -19,7 +19,12 @@ const userSchema = new mongoose.Schema(
       required: [true, 'Password is required'],
       minlength: [8, 'Password must be at least 8 characters long']
     },
-    fullName: String
+    fullName: {
+      type: String
+    },
+    googleID: {
+      type: String
+    }
   },
   {
     timestamps: true
@@ -36,7 +41,11 @@ userSchema.pre('save', function(next) {
   } else {
     next()
   }
-})
+});
+
+userSchema.methods.checkPassword = function(passwordToCheck ) {
+  return bcrypt.compare(passwordToCheck, this.password);
+}
 
 const User = mongoose.model('User', userSchema);
 

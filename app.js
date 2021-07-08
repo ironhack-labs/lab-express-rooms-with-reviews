@@ -4,18 +4,30 @@ const createError = require("http-errors");
 const express = require("express");
 const logger = require("morgan");
 const hbs = require("hbs");
+const passport = require('passport');
 
 // Connection to DB
 require('./config/db.config');
 
+require('./config/passport.config');
+
 const app = express();
+
+require('./config/session.config')(app);
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(logger('dev'));
+app.use(passport.initialize());
+app.use(passport.session());
 app.set('views', __dirname + "/views");
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
+
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next()
+})
 
 // Routes
 const routes = require('./routes/routes');
