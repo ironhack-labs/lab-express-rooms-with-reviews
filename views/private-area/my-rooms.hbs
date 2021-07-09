@@ -1,0 +1,30 @@
+<div class="d-flex mt-3">
+    <h3 class="text-muted me-auto">My Rooms</h3>
+    <a class="btn btn-success btn-sm" href="/rooms/create">Add Room</a>
+</div>
+
+<div class="container">
+    {{#if rooms}}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {{#each rooms as |room|}}
+        <div class="col">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title text-muted fs-3 text-center fw-bold">{{room.name}}</h5>
+                    <img src="{{room.imageUrl}}" class="card-img mt-5" alt="...">
+                    <p class="card-text mt-5">{{room.description}}</p>
+                </div>
+                <div class="card-footer d-flex">
+                    <a class="btn btn-warning me-auto" href="/private/my-rooms/{{id}}/edit">Edit</a>
+                    <form action="/private/my-rooms/{{room._id}}/delete" method="POST">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{else}}
+    <p>You have no rooms</p>
+    {{/if}}
+</div>

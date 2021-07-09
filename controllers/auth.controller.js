@@ -9,8 +9,6 @@ module.exports.register = (req, res, next) => {
 }
 
 module.exports.doRegister = (req, res, next) => {
-  // Comprobar que no existe un usuario con el mismo email
-
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
@@ -69,7 +67,7 @@ module.exports.doLoginGoogle = (req, res, next) => {
     } else {
       req.login(user, loginErr => {
         if (loginErr) next(loginErr)
-        else res.redirect('/profile')
+        else res.redirect('/private/my-rooms')
       })
     }
   })(req, res, next)
@@ -82,7 +80,6 @@ module.exports.logout = (req, res, next) => {
 
 module.exports.activateAccount = (req, res, next) => {
   const token = req.params.token;
-
   User.findOneAndUpdate(
     { activationToken: token, active: false },
     { active: true }

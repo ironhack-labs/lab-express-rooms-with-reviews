@@ -1,10 +1,20 @@
-// const mongoose     = require('mongoose')
+const mongoose = require("mongoose");
 
-// const reviewSchema = new Schema({
-//   user: { type: Schema.Types.ObjectId, ref: 'User' },
-//   comment: { type: String,  maxlength: 200 }
-// })
+const reviewSchema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    comment: {
+      type: String,
+      maxlength: 200,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-
-// const Review = mongoose.model("Review", userSchema);
-// module.exports = Review;
+const Review = mongoose.model("Review", reviewSchema);
+module.exports = Review;

@@ -1,5 +1,4 @@
-<p class="mt-5">Wellcome {{user.fullName}}</p>
-<form class="mt-3" action="/create-rooms" method='POST'>
+<form class="mt-5" action="/rooms/create" method='POST'>
     <div class="row">
         <div class="col-md-12 form-group mb-3">
             <label for="name">Room Name</label>
@@ -12,10 +11,6 @@
         <div class="col-md-12 form-group mb-3">
             <label for="description">Description</label>
             <textarea class="form-control" name="description"></textarea>
-        </div>
-         <div class="col-md-12 form-group mb-3">
-            <label for="owner">Owner</label>
-            <input type="text" class="form-control" name="owner">
         </div>
     </div>
     <button type="submit" class="btn btn-success">Create Room</button>

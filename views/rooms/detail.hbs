@@ -1,0 +1,48 @@
+<div class="jumbotron">
+    <h1 class="display-3">{{room.name}}</h1>
+    <p class="lead text-muted">{{room.description}}</p>
+    <hr class="my-4">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{room.imageUrl}}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="reviews mt-5">
+    <div class="review">
+        <figure class="border p-2">
+            <p class="mb-0">Shirley Gianina</p>
+            <blockquote class="blockquote-footer">
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                </p>
+            </blockquote>
+        </figure>
+    </div>
+    <div class="review">
+        <figure class="border p-2">
+            <p class="mb-0">Shirley Gianina</p>
+            <blockquote class="blockquote-footer">
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                </p>
+            </blockquote>
+        </figure>
+    </div>
+    <div class="review">
+        <figure class="border p-2">
+            <p class="mb-0">Shirley Gianina</p>
+            <blockquote class="blockquote-footer">
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                </p>
+            </blockquote>
+        </figure>
+    </div>
+    <form>
+        <textarea rows="5" class="w-100"></textarea>
+        <div class="d-flex">
+            <button type="submit" class="ms-auto btn btn-success">Add comment</button>
+        </div>
+    </form>
+</div>
