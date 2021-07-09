@@ -1,5 +1,5 @@
 
-const DB_NAME = 'emosi2dona2';
+const DB_NAME = 'Ironrooms';
 const URI = 'mongodb://localhost:27017';
 const DB_URI = `${URI}/${DB_NAME}`;
 
