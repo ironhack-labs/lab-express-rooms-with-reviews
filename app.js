@@ -7,7 +7,7 @@ const passport = require("passport");
 
 // Conection to DB
 require("./config/db.config");
-// require("./config/passport.config");
+require("./config/passport.config");
 
 const app = express();
 
@@ -22,11 +22,10 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
 
-// app.use((req, res, next) => {
-//   res.locals.currentUser = req.user;
-
-//   next()
-// })
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next()
+})
 
 // Routes
 const routes = require("./config/routes");

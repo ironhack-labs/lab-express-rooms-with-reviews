@@ -3,7 +3,7 @@ const MongoStore = require('connect-mongo');
 
 const { db } = require('./constants');
 
-module.exports = () => {
+module.exports = (app) => {
     app.use(
         session({
             secret: process.env.SESSION_SECRET || 'change me',

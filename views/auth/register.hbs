@@ -1,6 +1,6 @@
 <h1>Register here</h1>
 
-<form action="/register" method="POST">
+<form action="/register" method="POST" enctype="multipart/form-data">
   <div class="mb-3">
     <label for="email" class="form-label">Email address</label>
     <input name="email" value="{{user.email}}" type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" required>
@@ -9,6 +9,10 @@
         {{errors.email}}
       </div>
     {{/if}}
+  </div>
+  <div class="mb-3">
+    <label for="formFile" class="form-label">Select a file</label>
+    <input name="image" type="file" id="formFile" class="form-control" >
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>

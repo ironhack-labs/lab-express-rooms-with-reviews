@@ -1,4 +1,4 @@
-const DB_NAME = 'Rooms App';
+const DB_NAME = 'RoomsApp';
 const URI = 'mongodb://localhost:27017';
 const DB_URI = `${URI}/${DB_NAME}`;
 
