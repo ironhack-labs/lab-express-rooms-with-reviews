@@ -1,27 +1,43 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="/">Rooms</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="/images/logo1.png" alt="" width="100" height="80">
+    </a>
+    <button class="navbar-toggler btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-         {{#if currentUser}}
+     <div class="navbar-collapse collapse show" id="navbarColor02" style="">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
-            <form action="/logout" method="POST">
-              <button class="nav-link btn btn-link">Logout</button>
-            </form>
+          <a class="nav-link" href="/">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        {{#if currentUser}}
+        <li class="nav-item">
+          <a class="nav-link" href="/list">Rooms</a>
+        </li>
+        <li class="nav-item">
+          <form action="/logout" method="POST">
+            <button class="nav-link btn btn-outline-success px-1">Logout</button>
+          </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Page Privada</a>
         </li>
         {{ else }}
         <li class="nav-item">
-          <a class="nav-link" href="/register" tabindex="-1" aria-disabled="true">Register</a>
+          <a class="nav-link" href="/register">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/login" tabindex="-1" aria-disabled="true">Log in</a>
+          <a class="nav-link" href="/login">Log In</a>
         </li>
         {{/if}}
       </ul>
+      <form class="d-flex">
+        <input class="form-control me-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>

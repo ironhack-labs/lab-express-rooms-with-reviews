@@ -1,9 +1,9 @@
  
-<h3 class="my-4">Login</h3>
+<h3 class="my-4 text-muted">Login</h3>
 
 <form action="/login" method="POST">
   <div class="mb-3">
-    <label for="email" class="form-label">Email address</label>
+    <label for="email" class="form-label text-muted">Email address:</label>
     <input name="email" value="{{user.email}}" type="email" class="form-control {{#if errorMessage}}is-invalid{{/if}}" id="email" required>
     {{#if errorMessage}}
       <div class="invalid-feedback">
@@ -12,9 +12,13 @@
     {{/if}}
   </div>
   <div class="mb-3">
-    <label for="password" class="form-label">Password</label>
+    <label for="fullname" class="form-label text-muted">Fullname:</label>
+    <input name="fullname" value="{{user.fullname}}" type="text" class="form-control {{#if errorMessage}}is-invalid{{/if}}" id="fullname" required>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label text-muted">Password</label>
     <input name="password" type="password" class="form-control {{#if errorMessage}}is-invalid{{/if}}" id="password" required>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button> 
-  <a href="/auth/google" class="btn btn-primary">Log in with Google</a>
+  <button type="submit" class="btn btn-success">Submit</button> 
+  <a href="/auth/google" class="btn btn-success">Log in with Google</a>
 </form>

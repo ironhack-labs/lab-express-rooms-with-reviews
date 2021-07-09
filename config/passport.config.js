@@ -31,7 +31,14 @@ passport.use(
           } else {
             return user.checkPassword(password).then((match) => {
               if (match) {
-                next(null, user);
+                // comprobar si es active
+                if (user.active) {
+                  next(null, user);
+                } else {
+                  next(null, false, {
+                    error: "Check your email. You have activate your account",
+                  });
+                }
               } else {
                 next(null, false, { error: "Email or password are incorrect" });
               }
@@ -63,6 +70,7 @@ passport.use(
                 email,
                 password: mongoose.Types.ObjectId(),
                 googleID: googleID,
+                active: true,
               });
 
               return newUserInstance
