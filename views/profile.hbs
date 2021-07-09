@@ -1,0 +1,8 @@
+<div class="container">
+  <h1 class="py-3">Your Profile</h1>
+
+  {{#if currentUser}}
+    <p>Email : {{currentUser.email}}</p>
+    <p>Image: <img src="{{currentUser.image}}" alt="" /></p>
+  {{/if}}
+</div>

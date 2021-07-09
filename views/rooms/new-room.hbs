@@ -1,0 +1,25 @@
+<div class="container d-felx flex-row align-items-center">
+  <h2 class="text-center fw-bolder pt-5">ADD A NEW ROOM</h2>
+
+  <form
+    action="/rooms/create"
+    method="POST"
+    class="pt-3"
+  >
+    <div class="my-3 align-items-center">
+      <label for="name" class="fw-bolder">NAME:</label>
+      <input type="text" class="form-control" id="name" name="name" />
+    </div>
+    <div class="my-3 align-items-center">
+      <label for="description" class="fw-bolder">DESCRIPTION:</label>
+      <input type="text" class="form-control" id="description" name="description" />
+    </div>
+    <div class="my-3 align-items-center">
+      <label for="imageUrl" class="fw-bolder">IMAGE URL:</label>
+      <input type="text" class="form-control" id="imageUrl" name="imageUrl" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">ADD</button>
+
+  </form>
+</div>
