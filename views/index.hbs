@@ -1,3 +1,6 @@
 <h1>Ironrooms</h1>
 
-<p>{{currentUser.email}}</p>
+{{#if currentUser}}
+  <p>{{currentUser.email}}</p>
+  <img src="{{currentUser.image}}" alt="" />
+{{/if}}
