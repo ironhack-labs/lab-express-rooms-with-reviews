@@ -2,6 +2,7 @@ const router = require("express").Router();
 const passport = require("passport");
 
 const Room = require("../models/Room.model");
+const Review = require("../models/Review.model");
 
 module.exports.index = (req, res, next) => {
   res.render("index");
@@ -41,10 +42,14 @@ module.exports.doCreateRoom = (req, res, next) => {
 module.exports.idRoom = (req, res, next) => {
   const { id } = req.params;
   Room.findById(id)
-    //.populate("cast")
+    .populate("reviews")
     .then((room) => {
-      console.log(room);
-      res.render("rooms/room-details", { room: room });
+      console.log("hola")
+      let userRoom = false;
+      if (room.owner == req.user.email) {
+        userRoom = true
+      }
+      res.render("rooms/room-details", { room: room, userRoom });
     })
     .catch(next);
 };
@@ -82,6 +87,37 @@ module.exports.deleteRoom = (req, res, next) => {
           .catch(next);
       } else {
         res.redirect(`/rooms/${id}`);
+      }
+    })
+    .catch(next);
+};
+
+module.exports.doCreateReview = (req, res, next) => {
+  const data = {
+    comment: req.body.comment,
+    user: req.user.email,
+    roomId: req.params.roomid,
+  };
+  Review.create(data)
+    .then(() => {
+      res.redirect(`/rooms/${data.roomId}`);
+    })
+    .catch(next);
+};
+
+module.exports.deleteReview = (req, res, next) => {
+  const { id } = req.params;
+  Review.findById(id)
+    .then((review) => {
+      const roomid = review.roomId;
+      if (review.user == req.user.email) {
+        Review.findByIdAndDelete(id)
+          .then((review) => {
+            res.redirect(`/rooms/${roomid}`);
+          })
+          .catch(next);
+      } else {
+        res.redirect(`/rooms/${review.roomId}`);
       }
     })
     .catch(next);

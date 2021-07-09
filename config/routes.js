@@ -55,6 +55,8 @@ router.post("/logout", authMiddleware.isAuthenticated, authController.logout);
 
 router.get("/profile", authMiddleware.isAuthenticated, miscController.profile);
 
+// Rooms
+
 router.get("/rooms", miscController.rooms);
 
 router.get(
@@ -97,4 +99,17 @@ router.get(
   authController.activate
 );
 
+// Reviews
+router.post(
+  "/rooms/:roomid/reviews",
+  authMiddleware.isAuthenticated,
+  miscController.doCreateReview
+);
+router.post(
+  "/reviews/:id/delete",
+  authMiddleware.isAuthenticated,
+  miscController.deleteReview
+);
+
+// Export
 module.exports = router;
