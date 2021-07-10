@@ -1,0 +1,27 @@
+<h1>Register</h1>
+
+<form action='/users/register' method="POST">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" value="{{user.email}}" name='email' class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" required>
+    {{#if errors.email}}
+      <div class="invalid-feedback">
+        {{errors.email}}
+      </div>
+    {{/if}}
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" name='password' class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" required>
+    {{#if errors.password}}
+      <div class="invalid-feedback">
+        {{errors.password}}
+      </div>
+    {{/if}}
+  </div>
+  <div class="mb-3">
+    <label for="fullName" class="form-label">Full Name</label>
+    <input type="text" name='fullName' class="form-control" id="fullName" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

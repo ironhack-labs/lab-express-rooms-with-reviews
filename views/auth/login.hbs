@@ -1,0 +1,19 @@
+<h1>Login</h1>
+
+<form action='/users/login' method="POST">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" name='email' value='{{user.email}}' class="form-control {{#if errorMessage}}is-invalid{{/if}}" id="email" required> 
+    {{#if errorMessage}}
+      <div class='invalid-feedback'>
+        {{errorMessage}}
+      </div>
+    {{/if}}
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" name='password' class="form-control {{#if errorMessage}}is-invalid{{/if}}" id="password" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <a href='/users/auth/google' class="btn btn-primary">Log In with Google</a>
+</form>
