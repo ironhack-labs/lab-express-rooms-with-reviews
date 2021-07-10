@@ -1,0 +1,17 @@
+[
+    {
+        "name": "ROOM SUPERIOR",
+        "description": "Habitacion esplendida en el centro de Madrid" ,
+        "imageUrl": "/images/room1.jpeg"
+    },
+    {
+        "name": "ROOM DELUXE",
+        "description": "Habitacion en el centro de Granada" ,
+        "imageUrl": "/images/room2.jpeg"
+    },
+    {
+        "name": "SUITE JUNIOR",
+        "description": "Habitacion en el centro de Malaga" ,
+        "imageUrl": "/images/room3.jpeg"
+    }
+]

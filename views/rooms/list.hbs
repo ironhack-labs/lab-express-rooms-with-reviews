@@ -1,0 +1,17 @@
+<div class="row row-cols-1 row-cols-md-3">
+    {{#each rooms as |room|}}
+    <div class="col">
+        <a href="/rooms/{{room._id}}" class="text-decoration-none">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title text-muted fs-3 text-center fw-bold">{{room.name}}</h5>
+                    <img src="{{room.imageUrl}}" class="card-img mt-3" alt="..." style="min-height: 150px; max-height: 200px;">
+                </div>
+                <div class="card-footer">
+                    <p class="text-muted card-text mt-1">{{room.description}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {{/each}}
+</div>
