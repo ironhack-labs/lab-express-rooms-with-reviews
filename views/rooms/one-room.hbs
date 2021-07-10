@@ -1,0 +1,37 @@
+<h1> Room details</h1>
+
+<div class="room-card">
+
+</div>
+<h2>Name: {{room.name}}</h2>
+<p>Description: {{room.description}}</p>
+<img class="room-img" src="{{room.imageUrl}}" alt="{{room.name}}" />
+
+<h4>Owner: {{room.owner.username}}</h4>
+
+<br />
+<br />
+<h2>Want to leave a comment?</h2>
+<form action='/rooms/{{room._id}}' method='POST'>
+
+  <textarea type='text' name='comment'></textarea>
+
+  <button type="submit">Send comment</button>
+
+</form>
+
+
+
+{{#if room.reviews}}
+<h3>List of reviews:</h3>
+
+{{#each room.reviews}}
+
+  <h4>Author: {{this.user.username}}</h4>
+  <h5>Author: {{this.user.email}}</h5>
+  
+  <p>Comment: </p>
+  <p>{{this.comment}}</p>
+
+{{/each}}
+{{/if}}
