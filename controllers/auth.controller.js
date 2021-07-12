@@ -14,7 +14,7 @@ User.findOne({ email: req.body.email })
         if (!user) {
             if (req.file) {
                 console.log(req.file)
-                req.body.image = `/uploads/${req.file.filename}`
+                req.body.image = req.file.path
             }
 
             User.create(req.body)
@@ -57,7 +57,7 @@ module.exports.doLogin = (req, res, next) => {
     })(req, res, next)
 }
 
-// module.exports.logout = (req, res, next) => {
-//     req.session.destroy();
-//     res.redirect('/main');
-// }
+module.exports.logout = (req, res, next) => {
+    req.session.destroy();
+    res.redirect('/');
+}
