@@ -1,0 +1,28 @@
+<form action="/room/edit/{{foundRoom._id}}" method='POST'>
+  <h3>
+    Edit Room
+  </h3>
+  <label for='name'>
+    Room's name
+    <input type='text' name='name' value="{{foundRoom.name}}" />
+  </label>
+  <label for='description'>Description
+    <textarea
+      name='description'
+      id=''
+      cols='30'
+      rows='10'
+      value="{{foundRoom.description}}"
+    ></textarea>
+  </label>
+  <label for='imageUrl'>
+    Image URL
+    <input type='text' name='imageUrl' value="{{foundRoom.imageUrl}}"/>
+  </label>
+  <button>
+    Submit the room
+  </button>
+</form>
+<a href='/room'>
+  Back to main room
+</a>
