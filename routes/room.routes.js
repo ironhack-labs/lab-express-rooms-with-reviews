@@ -5,6 +5,7 @@ const router = require('express').Router();
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
+const Review = require('../models/Review.model');
 
 //GET to show the main room
 router.get('/', (req, res) => {
@@ -26,13 +27,29 @@ router.get('/list', (req, res) => {
 router.get('/show/:id', (req, res) => {
   const errorMessage = req.session?.error;
   const errorDeletion = req.session?.errorDeletion;
+  const errorReview = req.session.errorReview;
   const { id } = req.params;
+
   Room.findById(id)
-    .populate('owner')
+    .populate({
+      path: 'owner',
+      path: 'reviews',
+      populate: {
+        path: 'user',
+        // model: 'User',
+      },
+    })
     .then((foundRoom) => {
-      res.render('rooms/room', { foundRoom, errorMessage, errorDeletion });
+      console.log(foundRoom);
+      res.render('rooms/room', {
+        foundRoom,
+        errorMessage,
+        errorDeletion,
+        errorReview,
+      });
       delete req.session.error;
       delete req.session.errorDeletion;
+      delete req.session.errorReview;
     })
     .catch((err) => {
       console.log(err);

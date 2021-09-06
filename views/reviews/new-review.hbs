@@ -1,0 +1,17 @@
+ID: {{roomId}}
+<form action='/review/create' method='POST'>
+  <label for='comment'>
+    Comment
+    <textarea
+      maxlength='200'
+      name='comment'
+      id=''
+      cols='30'
+      rows='10'
+    ></textarea>
+    <input type="hidden" name="roomId" value={{roomId}}>
+    <button>
+      Save
+    </button>
+  </label>
+</form>

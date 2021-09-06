@@ -1,3 +1,8 @@
+{{#if errorReview}}
+  <p class='error-message'>
+    {{errorReview}}
+  </p>
+{{/if}}
 <div class='room'>
   <h4>
     {{foundRoom.name}}
@@ -12,38 +17,63 @@
     </b>
   </p>
   <hr />
+  <div class='comments'>
+    <h4>
+      Comments:
+    </h4>
+    {{#each foundRoom.reviews}}
+      <p class='review'>
+        <b>
+          Author:
+        </b>
+        {{this.user.fullName}}
+      </p>
+      <p>
+        <b>
+          Comment:
+        </b>
+        {{this.comment}}
+      </p>
+    {{/each}}
+    <hr />
+  </div>
   <div class='room-actions'>
-    <nav class='room-actions-navbar navbar navbar-light bg-light'>
-      <ul class='navbar-nav mr-auto room-actions'>
-        <li class='nav-item'>
-          <a class='nav-link' href="/room/edit/{{foundRoom._id}}">
-            Edit
-            {{#if errorMessage}}
-              <p class='error-message'>
-                {{errorMessage}}
-              </p>
-            {{/if}}
-          </a>
-        </li>
-        <li class='nav-item'>
-          <form action="/room/delete/{{foundRoom._id}}" method='POST'>
-            <button
-              class='btn btn-link text-danger'
-              role='link'
-              type='submit'
-              name='op'
-              value='Link 1'
-            >
-              Delete
-            </button>
-             {{#if errorDeletion}}
-              <p class='error-message'>
-                {{errorDeletion}}
-              </p>
-            {{/if}}
-          </form>
-        </li>
-      </ul>
-    </nav>
+    <ul class='navbar-nav mr-auto room-actions'>
+      <li class='nav-item'>
+        <a class='nav-link' href="/review/create/{{foundRoom._id}}">
+          Add Review
+        </a>
+      </li>
+      <li class='nav-item'>
+        <a class='nav-link' href="/room/edit/{{foundRoom._id}}">
+          Edit Room
+          {{#if errorMessage}}
+            <p class='error-message'>
+              {{errorMessage}}
+            </p>
+          {{/if}}
+        </a>
+      </li>
+      <li class='nav-item'>
+      </li>
+      <li>
+      </li>
+      <form action="/room/delete/{{foundRoom._id}}" method='POST'>
+        <button
+          class='btn btn-link text-danger'
+          role='link'
+          type='submit'
+          name='op'
+          value='Link 1'
+        >
+          Delete
+        </button>
+        {{#if errorDeletion}}
+          <p class='error-message'>
+            {{errorDeletion}}
+          </p>
+        {{/if}}
+      </form>
+    </ul>
   </div>
 </div>

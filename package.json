@@ -15,6 +15,7 @@
     "express-session": "^1.17.2",
     "hbs": "^4.1.2",
     "mongoose": "^6.0.4",
+    "mongoose-deep-populate": "^3.2.0",
     "morgan": "^1.10.0",
     "serve-favicon": "^2.5.0"
   },
