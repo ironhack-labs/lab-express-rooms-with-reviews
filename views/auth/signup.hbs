@@ -1,0 +1,29 @@
+<div>
+  <form action='/auth/signup' method='POST'>
+    <h3>
+      Sign Up
+    </h3>
+    <hr />
+    <br />
+    <label>
+      Full Name
+      <input type='text' name='fullName' />
+    </label>
+    <label>
+      Email
+      <input type='text' name='email' />
+    </label>
+    <label>
+      Password
+      <input type='password' name='password' />
+    </label>
+    <button type='submit'>
+      Submit
+    </button>
+  </form>
+  {{#if errorMessage}}
+    <p class='error-message'>
+      {{errorMessage}}
+    </p>
+  {{/if}}
+</div>
