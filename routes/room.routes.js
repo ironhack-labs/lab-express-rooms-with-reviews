@@ -27,7 +27,7 @@ router.get('/list', (req, res) => {
 router.get('/show/:id', (req, res) => {
   const errorMessage = req.session?.error;
   const errorDeletion = req.session?.errorDeletion;
-  const errorReview = req.session.errorReview;
+  const errorReview = req.session?.errorReview;
   const { id } = req.params;
 
   Room.findById(id)
