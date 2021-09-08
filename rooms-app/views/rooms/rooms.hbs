@@ -1,0 +1,10 @@
+<h1>Rooms</h1>
+<ul>
+
+{{#each rooms}}
+<li>
+    {{this.name}}
+    <a href="rooms/{{this._id}}">View details</a>
+    </li>
+{{/each}}
+</ul>
