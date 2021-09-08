@@ -1,0 +1,24 @@
+<h2>Edit movie</h2>
+
+<form action="/movies/{{_id}}/edit" method="POST">
+
+
+ <label for='name'>Name</label>
+  <input type='text' name='name' value="{{name}}">
+
+  <br>
+  <label for='description'>Description</label>
+  <input type='text' name='description' value="{{description}}">
+  <br>
+  <label for='imageUrl'>Image Url</label>
+  <input type='text' name='imageUrl' value="{{imageUrl}}">
+  <br>
+  <label for='owner'>Owner</label>
+  <input type='text' name='owner' value="{{owner}}">
+
+
+
+  <br>
+  <button type='submit'>Edit Movie</button>
+
+</form>

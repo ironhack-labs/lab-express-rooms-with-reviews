@@ -1,0 +1,38 @@
+
+<h1>Create a new Movie</h1>
+
+
+<form action="/rooms/create" method="POST">
+
+
+ <label for='name'>Name</label>
+  <input type='text' name='name'>
+
+  <br>
+  <label for='description'>Description</label>
+  <input type='text' name='description'>
+  <br>
+  <label for='imageUrl'>Image Url</label>
+  <input type='text' name='imageUrl'>
+  <br>
+
+
+    <br>
+  <label for=''>Owner</label>
+  <select name="owner" id="owner">
+    {{!-- {{#each users}} --}}
+      <option value="{{user._id}}">{{user.email}}</option>
+    {{!-- {{/each}} --}}
+  </select>
+
+
+{{!-- 
+  <label for='owner'>Owner</label>
+  <input type='text' name='owner'>
+ --}}
+
+
+  <br>
+  <button type='submit'>ADD</button>
+
+</form>
