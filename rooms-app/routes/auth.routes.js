@@ -46,7 +46,7 @@ router.post('/login', (req, res, next) => {
 
 	User.findOne({ username }).then((user) => {
 		if (!user) {
-			res.render('login', { errorMessage: 'Incorrect user or password' });
+			return res.render('login', { errorMessage: 'Incorrect user or password' });
 		}
 		const passwordCorrect = bcrypt.compareSync(password, user.password);
 		if (passwordCorrect) {
