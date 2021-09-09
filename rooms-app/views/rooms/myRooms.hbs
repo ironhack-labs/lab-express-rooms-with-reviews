@@ -1,0 +1,14 @@
+<h2>My Rooms</h2>
+<p>{{message}}</p>
+{{#each rooms}}
+    <div>
+        <h5>{{this.name}}</h5>
+        <p>{{this.description}}</p>
+        <img src="{{this.imageUrl}}">
+        <a href="/rooms/edit/{{id}}">Edit</a>
+        <form action="/rooms/delete/{{id}}" method="POST"> 
+            <button>Delete</button>
+        </form>
+        <br>
+    </div>
+{{/each}}
