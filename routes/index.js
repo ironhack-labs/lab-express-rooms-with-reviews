@@ -1,5 +1,6 @@
 const router = require("express").Router();
 
+
 /* GET home page */
 router.get("/", (req, res, next) => {
   res.render("index");
@@ -14,15 +15,15 @@ const loginCheck = () => {
       // proceed as planned
       next();
     } else {
-      res.redirect('/profile');
+      res.redirect('/login');
     }
   }
 }
-
 router.get('/profile', loginCheck(), (req, res, next) => {
   console.log('LOGGED IN')
   const loggedInUser = req.user;
-  res.render('/views/profile', { user: loggedInUser })
+  res.render('../views/profile.hbs', { user: loggedInUser })
 });
+
 
 module.exports = router;

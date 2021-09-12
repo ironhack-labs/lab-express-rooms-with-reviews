@@ -22,6 +22,24 @@ require("./config")(app);
 const projectName = "rooms-app";
 const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase();
 
+// session configuration
+
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const DB_URL = process.env.MONGO;
+
+app.use(
+	session({
+		secret: process.env.SESSION_SECRET,
+		resave: true,
+		saveUninitialized: false,
+		store: MongoStore.create({
+			mongoUrl: DB_URL
+		})
+	})
+)
+// end of session configuration
+
 app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 
 
