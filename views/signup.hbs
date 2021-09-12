@@ -1,0 +1,35 @@
+<h1>Signup</h1>
+
+<form action="/signup" method="POST">
+
+<div>
+	<label for="username">Username: </label>
+	<input type="text" name="username" id="username">
+</div>
+
+<div>
+	<label for="firstname">First name: </label>
+	<input type="text" name="firstname" id="firstname">
+</div>
+
+<div>
+	<label for="lastname">Last name: </label>
+	<input type="text" name="lastname" id="lastname">
+</div>
+<br>
+
+<div>
+	<label for="email">Email:</label>
+    <input type="email" name="email" id="email">
+	<label for="password">Password: </label>
+	<input type="password" name="password" id="password">
+</div>
+	
+	<button type="submit">Sign up</button>
+</form>
+<br>
+<a href="/auth/slack">Sign Up with Slack 🦊</a>
+
+{{#if message}}
+	<p style="color: red">{{message}}</p>
+{{/if}}
