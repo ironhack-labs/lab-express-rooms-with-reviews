@@ -14,15 +14,15 @@ const loginCheck = () => {
       // proceed as planned
       next();
     } else {
-      res.redirect('/login');
+      res.redirect('/profile');
     }
   }
 }
 
 router.get('/profile', loginCheck(), (req, res, next) => {
-  // using node-basic-auth: req.session.user
+  console.log('LOGGED IN')
   const loggedInUser = req.user;
-  res.render('/profile', { user: loggedInUser })
+  res.render('/views/profile', { user: loggedInUser })
 });
 
 module.exports = router;
