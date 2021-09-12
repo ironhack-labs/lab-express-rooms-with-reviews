@@ -1,0 +1,7 @@
+<h1>Hello {{user.username}} 👋</h1>
+
+{{#if user.avatar}}
+	<img src="{{user.avatar}}" style="height: 150px; border-radius: 50%;">
+{{/if}}
+
+<a href="/logout">Log out</a>
