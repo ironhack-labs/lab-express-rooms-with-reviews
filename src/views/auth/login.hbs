@@ -13,7 +13,7 @@
         </a>
       </p>
     </div>
-    <form class="mt-8 space-y-6" action="#" method="POST">
+    <form class="mt-8 space-y-6" action="/auth/login" method="POST">
       <input type="hidden" name="remember" value="true">
       <div class="rounded-md shadow-sm -space-y-px">
         <div>
@@ -37,6 +37,9 @@
           Sign in
         </button>
       </div>
+     {{#if msg}}
+         <p class="text-red-400">{{msg}}</p>
+    {{/if}}
     </form>
   </div>
 </div>
