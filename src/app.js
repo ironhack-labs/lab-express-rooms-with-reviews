@@ -10,6 +10,8 @@ const path = require("path")
 
 const connectDB = require("./db")
 
+const sessionManager = require("./config/session")
+
 // 2. Middlewares
 
 // Archivos estáticos, hace la conexión con carpeta public 
@@ -22,7 +24,11 @@ app.use(express.urlencoded({extended:true}))
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "hbs")
 
+// Conectar a BD.
 connectDB()
+
+// Sesiones.
+sessionManager(app)
 
 // 3. Rutas
 // Home
