@@ -7,6 +7,9 @@ const app = express()
 require("dotenv").config() // activa variables de entorno
 
 const path = require("path")
+
+const connectDB = require("./db")
+
 // 2. Middlewares
 
 // Archivos estáticos, hace la conexión con carpeta public 
@@ -19,9 +22,15 @@ app.use(express.urlencoded({extended:true}))
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "hbs")
 
+connectDB()
+
 // 3. Rutas
 // Home
 app.use("/", require("./routes"))
+
+// Login
+app.use("/auth", require("./routes/auth.router"))
+// Signup
 
 // 4. Exportación
 
