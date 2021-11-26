@@ -6,7 +6,7 @@ require("dotenv").config()
 // console.log(require("dotenv"))
 
 const path              =require("path")
-
+const connectDB         =require("./db")
 
 //2. MIDDLEWARES
 //Son funciones que se ejecutan despues de pedir un request y antes de la respuesta del servidor
@@ -20,12 +20,14 @@ app.set("view engine", "hbs") //hbs se usa para las views
 //To use req.body configura 
 app.use(express.urlencoded({ extended:true }))
 
+connectDB()
 
 //3. Routes
 //Home:
 app.use("/", require("./routes")) // si se llama index, puedo no poner nada despues del routes
 
-
+//Login y Signup
+app.use("/auth", require("./routes/auth.Routes"))
 
 //4. EXPORT
 module.exports = app
