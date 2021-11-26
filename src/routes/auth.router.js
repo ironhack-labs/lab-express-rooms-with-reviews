@@ -4,7 +4,9 @@ const router = require("express").Router()
 const { 
     getSignup, 
     postSignup,
-    getLogin 
+    getLogin,
+    postLogin, 
+    postLogout
 } = require("./../controllers/auth.controller")
 
 // Rutas.
@@ -14,6 +16,10 @@ router.post("/signup", postSignup)
 
 // Login
 router.get("/login", getLogin)
+router.post("/login", postLogin)
+
+// Logout.
+router.post("/logout", postLogout)
 
 // Exportaciones.
 module.exports = router

@@ -34,9 +34,11 @@ sessionManager(app)
 // Home
 app.use("/", require("./routes"))
 
-// Login
+// Login y signup
 app.use("/auth", require("./routes/auth.router"))
-// Signup
+
+// Users
+app.use("/user", require("./routes/user.router"))
 
 // 4. Exportación
 

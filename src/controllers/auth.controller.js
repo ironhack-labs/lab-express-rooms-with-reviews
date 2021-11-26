@@ -69,3 +69,47 @@ exports.getLogin = (req, res) => {
     res.render("auth/login")
 }
 
+exports.postLogin = async(req, res) => {
+
+    // Obtener datos del formulario.
+    const { email, password } = req.body
+
+    // Encontrar al usuario.
+    try {
+        const findUser = await User.findOne({email})
+        // Validaciones.
+
+        if(!findUser) {
+            return res.render("auth/login", {
+                msg: "User nor Found"
+            })
+        }
+
+        // Verificar contraseña. Devuelve booleano
+        const checkedPassword = await bcryptjs.compareSync(password, findUser.password)
+
+        if(!checkedPassword) {
+            return res.render("auth/login", {
+                msg: "Invalid Password"
+            })
+        } 
+
+        req.session.currentUser = {
+            _id: findUser._id,
+            name: findUser.name,
+            email: findUser.email,
+            imgUrl: findUser.imgUrl
+        }
+        // Redireccionar
+        res.redirect(`/user/${findUser.name}`)
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// Función logout
+exports.postLogout = async(req, res) => {
+    res.clearCookie("session-token")
+    req.session.destroy(err => err ? console.log(e) : res.redirect("/auth/login"))
+}

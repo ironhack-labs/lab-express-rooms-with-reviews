@@ -20,7 +20,7 @@ const userSchema = new Schema({
         type: String,
         required: [true, "Password is required."]
     },
-    imgURL: String
+    imgUrl: String
 }, {timestamps: true})
 
 // Model
