@@ -1,0 +1,43 @@
+{{!-- profile.hbs --}}
+{{#if currentUser}}
+<div class="min-h-full">
+
+  <main class="py-10">
+    <!-- Page header -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
+      <div class="flex items-center space-x-5">
+        <div class="flex-shrink-0">
+          <div class="relative">
+            <img class="h-16 w-16 rounded-full" src="{{currentUser.imgUrl}}" alt="">
+            <span class="absolute inset-0 shadow-inner rounded-full" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">{{currentUser.name}}</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
+      <div class="space-y-6 lg:col-start-1 lg:col-span-2">
+        <!-- Description list-->
+        <section aria-labelledby="applicant-information-title">
+          <div class="bg-white shadow sm:rounded-lg">
+            <div class="px-4 py-5 sm:px-6">
+              <h2 id="applicant-information-title" class="text-lg leading-6 font-medium text-gray-900">
+                Information
+              </h2>
+              <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                {{currentUser.email}}
+              </p>
+            </div>
+            <div>
+              <a href="#" class="block bg-gray-50 text-sm font-medium text-gray-500 text-center px-4 py-4 hover:text-gray-700 sm:rounded-b-lg">Edit image</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+{{/if}}
