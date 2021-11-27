@@ -1,6 +1,7 @@
 // Importaciones
 const bcryptjs = require("bcryptjs")
 const User = require("./../models/User")
+const mongoose = require("mongoose")
 
 // Funciones de Signup
 exports.getSignup = (req, res) => {
@@ -60,7 +61,16 @@ exports.postSignup = async(req, res) => {
         res.redirect (`user/${createdUser.name}`)
 
     } catch (error) {
-        
+        // validacion de email desde el servidor
+        if(error instanceof mongoose.Error.ValidationError) {
+            res.render("auth/signup", {
+                msg: "Use a valid email"
+            })
+        } else if(error.code === 11000) {
+            res.render("auth/signup", {
+                msg: "Email already exists. Try another"
+            })
+        }
     }
 }
 

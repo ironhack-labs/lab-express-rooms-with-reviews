@@ -17,18 +17,24 @@ const sessionManager = require("./config/session")
 // Archivos estáticos, hace la conexión con carpeta public 
 app.use(express.static(path.join(__dirname, "public"))) // ya no es necesario poner la /
 
-// Para usar el req.body, para obtener los datos de los formularios
-app.use(express.urlencoded({extended:true}))
-
 // Vistas
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "hbs")
+
+// Para usar el req.body, para obtener los datos de los formularios
+app.use(express.urlencoded({extended:true}))
 
 // Conectar a BD.
 connectDB()
 
 // Sesiones.
 sessionManager(app)
+
+// Layout middleware. Para saber si un usuario está loggeado y checar en las vistas
+app.use((req, res, next) => {
+    res.locals.currentUser = req.session.currentUser
+    next()
+})
 
 // 3. Rutas
 // Home
@@ -39,6 +45,9 @@ app.use("/auth", require("./routes/auth.router"))
 
 // Users
 app.use("/user", require("./routes/user.router"))
+
+// Rooms.
+app.use("/rooms", require("./routes/rooms.router"))
 
 // 4. Exportación
 
