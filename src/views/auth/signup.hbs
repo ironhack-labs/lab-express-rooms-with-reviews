@@ -29,7 +29,7 @@
         </div>
 
         <div class="mt-6">
-          <form action="#" method="POST" class="space-y-6">
+          <form action="/auth/signup" method="POST" class="space-y-6">
             <div>
               <label for="name" class="block text-sm font-medium text-gray-700">
                 Name
@@ -61,6 +61,11 @@
                 Sign un
               </button>
             </div>
+           
+           {{#if msg}}
+           <p class="text-red-400">{{msg}}</p>
+           {{/if}}
+
           </form>
         </div>
       </div>
