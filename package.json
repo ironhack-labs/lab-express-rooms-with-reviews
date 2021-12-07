@@ -1,0 +1,27 @@
+{
+  "name": "m2-d09-lab-exp-ssr-rooms-with-reviews-monifasol",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon --ext js,html,css,hbs ./bin/www"
+  },
+  "dependencies": {
+    "axios": "^0.24",
+    "bcrypt": "^5",
+    "connect-mongo": "^4",
+    "cookie-parser": "^1",
+    "dotenv": "^10.0.0",
+    "express": "^4",
+    "express-session": "^1",
+    "hbs": "^4",
+    "http-errors": "^1",
+    "mongoose": "^6",
+    "morgan": "^1",
+    "nodemon": "^2",
+    "serve-favicon": "^2"
+  },
+  "devDependencies": {
+    "debug": "~2.6.9"
+  }
+}

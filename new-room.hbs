@@ -1,0 +1,64 @@
+   
+    <h2>Create room</h2>
+
+    {{#if message}}
+        <p>{{message}}</p>
+    {{/if}}
+
+    <form method='POST' action="/rooms/new">
+
+        <label for="name">Name</label>
+        <input type="text" name="name" required />
+
+        <br/>
+
+        <label for="description">Description</label>
+        <input type="text" name="description" required />
+
+        <br/>
+        
+        <div class='field'>
+			<label class='label'>Owner:</label>
+
+			<div class='control'>
+                <select name="owner">
+				    <option selected disabled value=""></option>
+                    {{#each users}}
+                        <option value="{{_id}}">{{ username }}</option>
+                    {{/each}}
+                </select>
+			</div>
+
+		</div>
+
+        {{! <div class='field'>
+			<label class='label'>Image:</label>
+
+			<div class='control'>
+				<input class='input' type='file' name='imageUrl' required />
+			</div>
+
+		</div> }}
+
+		<div class='upload-image'>
+
+			<label class='file-label'>
+				<input class='file-input' type='file' name='imageUrl' />
+				<span class='file-cta'>
+					<span class='file-icon'>
+						<i class='fas fa-upload'></i>
+					</span>
+					<span class='file-label'>
+						Choose an image
+					</span>
+				</span>
+				<span class='file-name'>
+					Image must be 16x9 resolution
+				</span>
+			</label>
+		</div>
+
+        <button type="submit" class="btn">Create</button>
+
+    </form>
+
