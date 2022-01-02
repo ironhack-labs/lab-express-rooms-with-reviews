@@ -1,0 +1,23 @@
+<h1>Create a room</h1>
+
+
+<form action="/private/rooms/create" method='POST' enctype="multipart/form-data">
+
+  <label>Name:
+  <input type="text" name="name" required />
+  </label>
+
+  <label>Description: 
+  <textarea type="text" name="description" required></textarea>
+  </label>
+
+
+  <div class="form-group">
+  <label>Image:
+    <input type="file" name="imageUrl" class="form-control-file" />
+  </label>
+  </div>
+  
+  <button type="submit">Create</button>
+
+</form>
