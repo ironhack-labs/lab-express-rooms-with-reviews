@@ -1,9 +1,13 @@
-const app = require('express')();
-require('./db').connectDb();
-require('./config').config(app);
+const app = require("express")();
+require("./db").connectDb();
+require("./config").config(app);
 
-const indexRoutes = require('./routes')
-app.use('/', indexRoutes);
+require("./config/session.config").sessionInit(app);
+app.use((req, res, next) => {
+  console.log("session", req.session);
+  next();
+});
+const indexRoutes = require("./routes");
+app.use("/", indexRoutes);
 
-
-module.exports = app
+module.exports = app;
