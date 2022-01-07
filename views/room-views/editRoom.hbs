@@ -1,0 +1,10 @@
+Edit room
+<form action="/room/{{roomID}}" method='POST' enctype="multipart/form-data">
+<label for="name">name</label>
+<input type="text" name='name'>
+<label for="description">description</label>
+<input type="textarea" name='description'>
+<label for="image">image</label>
+<input type="file" name='image'>
+<button type="submit">edit</button>
+</form>

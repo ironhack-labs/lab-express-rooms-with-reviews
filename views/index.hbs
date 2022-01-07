@@ -1,0 +1,17 @@
+<h1>IRONHACKrooms</h1>
+
+<a href="/login">login</a>
+<a href="/signup">signup</a>
+
+<p>all rooms</p>
+
+{{#each rooms}}
+<div class='ctn-room'>
+<h2>name: {{name}}</h2>
+<p>owner: {{owner.fullName}}</p>
+<img src={{imageUrl.path}} alt="">
+<p>description: {{description}}</p>
+
+</div>
+<hr>
+{{/each}}
