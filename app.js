@@ -10,4 +10,10 @@ app.use((req, res, next) => {
 const indexRoutes = require("./routes");
 app.use("/", indexRoutes);
 
+const authRoutes = require('./routes/auth.routes');
+app.use('/', authRoutes);
+
+const roomRoutes = require('./routes/room.routes');
+app.use('/', roomRoutes)
+
 module.exports = app;

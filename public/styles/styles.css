@@ -5,6 +5,33 @@
 }
 /*-------*/
 
+
+
 body {
-    background-color: tomato;
+	background-color: burlywood;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+    color: black;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+.ctn-room{
+	background-color: tomato;
+	width: 300px;
+}
+
+.ctn-room img {
+	width: 50%;
 }

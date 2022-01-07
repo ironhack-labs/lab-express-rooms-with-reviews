@@ -1,0 +1,7 @@
+<h1>you successfully signed up!</h1>, {{newUser._doc.email}}
+<p>please set your username</p>
+<form action="/edituser/{{newUser._doc._id}}" method='post'>
+<label for="username"></label>
+<input type="text" name='username'>
+<button type="submit">set username</button>
+</form>

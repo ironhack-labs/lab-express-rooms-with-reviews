@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { getHome } = require('../controllers')
+const { getHome, getPrivate } = require('../controllers')
+const { isAnon, isLoggedIn } = require('../middlewares/auth.middlewares')
 
-router.get('/', getHome)
+router.get('/', isAnon, getHome).get('/private', isLoggedIn, getPrivate)
 
 module.exports = router;

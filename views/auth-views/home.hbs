@@ -1,0 +1,20 @@
+<h1>hello, {{user.fullName}}</h1>
+<form action="/logout" method='post'>
+
+<button type="submit">logout</button>
+
+</form>
+
+<a href="/room">create new room</a>
+
+<h1>your rooms</h1>
+
+{{#each rooms}}
+<div class='ctn-room'>
+<p>name: {{name}}</p>
+<img src={{imageUrl.path}} alt="">
+<p>description: {{description}}</p>
+<a href="/room/{{id}}">edit</a>
+<a href="/room/delete/{{id}}">delete</a>
+</div>
+{{/each}}
