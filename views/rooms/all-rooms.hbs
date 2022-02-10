@@ -1,0 +1,16 @@
+<h1>all rooms</h1>
+{{#each results}}
+<div class="allRoomsDiv">
+    <p>Room Name: {{this.name}}</p>
+    <p>Description: {{this.description}}</p>
+    <p>Room Owner: {{this.owner.fullName}}  |  {{this.owner.email}}</p>
+    <br>
+    <a href="/rooms/{{this._id}}/edit">Edit this room</a>
+    <br>
+    <br>
+    <form action="/rooms/{{this._id}}/delete" method="post">
+        <button type="submit">Delete Room</button>
+    </form>
+    <a href="/rooms/{{this._id}}">Open this room</a>
+</div>
+{{/each}}

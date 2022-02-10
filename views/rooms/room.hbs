@@ -1,0 +1,20 @@
+    <a href="/rooms/{{_id}}/edit">Edit this room</a>
+    <br>
+    <br>
+    <form action="/rooms/{{_id}}/delete" method="post">
+    <button type="submit">Delete Room</button>
+    </form>
+    <br>
+    <p>Room Name: {{name}}</p>
+    <p>Description: {{description}}</p>
+    <p>Room Owner: {{owner.fullName}}  |  {{owner.email}}</p>
+    <br>
+    <form action="/rooms/{{_id}}/add-comment" method="post">
+        <textarea name="comment" cols="30" rows="7" placeholder="Enter your comment here!"></textarea>
+        <br>
+        <button type="submit">Comment</button>
+    </form>
+    {{#each reviews}}
+    <p>User: {{this.user.fullName}}  | {{this.user.email}}</p>
+    <p>Comment: {{this.comment}}</p>
+    {{/each}}

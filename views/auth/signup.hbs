@@ -1,0 +1,12 @@
+<div>
+   <form action="/auth/signup" method="POST">
+    {{> emailPassword}}
+    <label for="fullName">Full Name: 
+        <input type="text" name="fullName" placeholder="First Name Last Name"></label>
+    <button type="submit">Sign Up</button>
+</form>
+</div>
+
+{{#if errorMessage}}
+   {{errorMessage}}
+{{/if}}
