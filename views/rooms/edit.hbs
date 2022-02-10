@@ -1,0 +1,15 @@
+<h1>editing room</h1>
+<div>
+    <form action="/rooms/{{_id}}/edit" method="post">
+        <label for="name">
+            <input type="text" name="name" placeholder="Room Name" value="{{name}}">
+        </label>
+        <br>
+        <br>
+        <label for="description">
+          <textarea cols="30" rows="5" name="description" placeholder="Add description for new room here." >{{description}}</textarea>
+        </label>
+        <br>
+        <button type="submit"> Update Room</button>
+    </form>
+</div>

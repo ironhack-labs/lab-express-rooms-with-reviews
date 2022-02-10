@@ -1,0 +1,10 @@
+<div>
+    <form action="/auth/login" method="post">
+    {{> emailPassword}}
+    <button type="submit">Log In</button>
+</form>
+</div>
+
+{{#if errorMessage}}
+   {{errorMessage}}
+{{/if}}
