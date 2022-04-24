@@ -1,0 +1,19 @@
+<div class="form">
+
+  <h2>Edit Comment</h2>
+
+  <form action="/review-edit/{{review._id}}" method="POST">
+
+    <div>
+      <label for="comment">Comment: </label>
+      <input id="comment" type="text" name="comment" value="{{review.comment}}"/>
+    </div>
+
+   <br>
+
+    <div>
+      <button type="submit">Edit Comment</button>
+    </div>
+
+  </form>
+</div>

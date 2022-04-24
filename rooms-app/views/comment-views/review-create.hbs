@@ -1,0 +1,26 @@
+<div class="form">
+
+  <h2>Create Comment</h2>
+
+  <form action="/review-create/{{room._id}}" method="POST">
+
+    <div>
+      <label for="comment-author">Author:  </label>
+      <input id="comment-author" type="text" name="user" value="{{author}}" />
+    </div>
+
+    <br>
+
+    <div>
+      <label for="comment">Comment: </label>
+      <input id="comment" type="text" name="comment" placeholder="Your comments here..."/>
+    </div>
+
+   <br>
+
+    <div>
+      <button type="submit">Create Comment</button>
+    </div>
+
+  </form>
+</div>

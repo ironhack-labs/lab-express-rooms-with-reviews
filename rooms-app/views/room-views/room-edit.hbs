@@ -1,0 +1,37 @@
+<div class="form">
+
+  <h2>Edit Room</h2>
+
+  <form action="/room-edit/{{room._id}}" method="POST">
+
+    <div>
+      <label for="room-name-input">Room Name: </label>
+      <input id="room-name-input" type="text" name="name" value="{{room.name}}" />
+    </div>
+
+    <br>
+
+    <div>
+      <label for="room-decsription">Room Decription: </label>
+      <input id="room-decsription" type="text" name="description" value="{{room.description}}" />
+    </div>
+
+   <br>
+
+    <div>
+      <label for="room-image">Image URL: </label>
+      <input id="room-image" type="text" name="imageUrl" value="{{room.imageUrl}}" />
+    </div>
+
+    <br>
+    
+    <div>
+      <button type="submit">Edit Room</button>
+    </div>
+
+      {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p> 
+      {{/if}}
+
+  </form>
+</div>

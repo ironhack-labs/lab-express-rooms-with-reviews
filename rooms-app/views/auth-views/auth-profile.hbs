@@ -1,0 +1,31 @@
+<div class="form">
+
+  <h2>Profile</h2>
+
+    <form action="/edit/{{userFound._id}}" method="POST">
+      <div>
+        <label for="full-name-input">Full Name: </label>
+        <input id="full-name-input" type="text" name="fullName" value="{{userFound.fullName}}"/>
+      </div>
+
+      <br>
+
+      <div>
+        <label for="email-input">Email: </label>
+        <input id="email-input" type="text" name="email" value="{{userFound.email}}" />
+      </div>
+
+      <br>
+
+      <button type="submit">Edit</button>
+
+    </form>
+
+    <form action="/logout" method="GET">
+      <button type="submit">Logout</button>
+    </form>
+
+  
+
+  
+</div>
