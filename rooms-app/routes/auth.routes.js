@@ -45,7 +45,6 @@ router.get('/profile/:id', (req, res, next) => {
 // *** HANDLE SIGNUP - CREATE USER *** //
 router.post('/signup', (req, res, next) => {
   const {fullName, email, password} = req.body
-  console.log(fullName, email, password);
 
   if (!fullName || !email || !password) {
     res.render('auth-views/auth-signup', { errorMessage: 'Ensure all fields are populated' });
@@ -55,7 +54,6 @@ router.post('/signup', (req, res, next) => {
   bcryptjs
     .hash(password, 10)
     .then(hashedPassword => {
-      console.log(hashedPassword)
         return User.create({ fullName, email, password: hashedPassword });
     })
     .then(userCreated => {
@@ -84,7 +82,6 @@ router.post('/login', (req, res, next) => {
         return;
       } else if (bcryptjs.compareSync(password, user.password)) {
         req.session.currentUser = user;
-        console.log(req.session)
         res.redirect(`/profile/${user._id}`);
       } else {
         res.render('auth-views/auth-login.hbs', { errorMessage: 'invalid password' });

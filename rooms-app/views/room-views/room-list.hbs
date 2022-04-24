@@ -1,0 +1,33 @@
+<h1>Rooms</h1>
+<hr>
+
+{{reviews}}
+
+<div class="row">
+  {{#each rooms}}
+    <div class="col-md-4 mb-5">
+      <div class="card" style="width: 18rem;">
+        <img src="{{imageUrl}}" class="card-img-top" alt="{{title}}">
+        <div class="card-body">
+          <h3 class="card-title">{{name}}</h3>
+          <p class="card-text">{{description}}</p>
+          <p>Owner Name: {{owner.fullName}}</p>
+          <a href="/room-edit/{{id}}" class="btn btn-primary">Edit</a>
+          <a href="/delete/{{id}}">Delete Room</a>
+          <a href="/review-create/{{id}}">Create a Review</a>
+          <ul>
+            {{#each reviews}}
+            <li>{{user.fullName}}</li>
+            <li>{{comment}}</li>
+            <a href="/review-edit/{{id}}">Edit Review</a>
+            <a href="/review-delete/{{id}}">Delete Review</a>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <p>There are no Rooms created yet!</p>
+  {{/each}}
+  <hr />
+</div>
