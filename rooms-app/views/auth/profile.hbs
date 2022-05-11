@@ -1,0 +1,21 @@
+<div class="container pb-5">
+    <p>Below you will find every review and room you have posted, click to edit </p>
+
+<div>
+    <h3>Rooms:</h3>
+    {{#each roomList}}
+    <p>
+        <a href="/room/{{_id}}/edit">{{name}}</a>
+    </p>
+    {{/each}}
+</div>
+<div>
+    <h3>Reviews:</h3>
+    {{#each reviewList}}
+    <p>
+        <a href="/review/{{_id}}/edit">{{comment}}</a>
+    </p>
+    {{/each}}
+</div>
+
+</div>

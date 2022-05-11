@@ -1,0 +1,55 @@
+<div class="col">
+{{#with roomInfo}}
+<div class="row">
+
+<div class="row  d-flex justify-content-center">
+  <div class="col-5">
+    <figure class="figure">
+      <img src="{{imageUrl}}" class="figure-img img-fluid rounded" alt="{{name}}" id="room-preview">
+      <figcaption class="figure-caption text-end">Image of room</figcaption>
+    </figure>
+  </div>  
+</div>
+
+    <h5 class="card-title">{{name}}</h5>
+    <p class="card-text">{{owner.fullName}}</p>
+    <h6 class="card-subtitle mb-2 text-muted">{{description}}</h6>
+{{/with}}
+  <div class="container">
+       {{#if roomInfo.yours}}
+        <form action="/room/{{roomInfo._id}}/delete" method="POST">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="/room/{{roomInfo._id}}/edit" class="btn btn-warning">Edit</a>
+        </form>
+       {{/if}}
+       <div class="col mt-3">
+       <a href="/room/list" class="btn btn-outline-info">Back to list</a>
+       {{#if roomInfo.yours}}
+        
+       {{else}}
+            {{#if userSession}}
+                <a href="/review/{{roomInfo._id}}/create" class="btn btn-outline-success">Post Review</a>
+            {{/if}}
+       {{/if}}
+        </div>
+</div>
+</div>
+
+
+
+<div class="container pb-5">
+    <h3>Reviews: </h3>
+<ul class="list-group list-group-flush">
+{{#each roomInfo.reviews}}
+    <li class="list-group-item">
+        <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"></h5>
+        <small class="text-muted">3 days ago</small>
+        </div>
+        <p class="mb-1">{{comment}}</p>
+        <small class="text-muted">{{user.fullName}}</small>    
+    </li>
+{{/each}}
+</ul>
+
+</div>

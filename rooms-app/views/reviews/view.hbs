@@ -1,0 +1,32 @@
+<div class="col">
+{{#with roomInfo}}
+<div class="row">
+
+<div class="row  d-flex justify-content-center">
+  <div class="col-5">
+    <figure class="figure">
+      <img src="{{imageUrl}}" class="figure-img img-fluid rounded" alt="{{name}}" id="room-preview">
+      <figcaption class="figure-caption text-end">Image of room</figcaption>
+    </figure>
+  </div>  
+</div>
+
+    <h5 class="card-title">{{name}}</h5>
+    <p class="card-text">{{owner.fullName}}</p>
+    <h6 class="card-subtitle mb-2 text-muted">{{description}}</h6>
+
+  <div class="container">
+       {{#if yours}}
+        <form action="/room/{{_id}}/delete" method="POST">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="/room/{{_id}}/edit" class="btn btn-warning">Edit</a>
+        </form>
+       {{/if}}
+       <div class="col mt-3">
+       <a href="/room/list" class="btn btn-info">Back to list</a>
+        <a href="/room/list" class="btn btn-secondary">Reviews</a>
+        </div>
+</div>
+</div>
+{{/with}}
+</div>
