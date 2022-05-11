@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col">
+    <h2>Create Review of {{room.name}}</h2>
+    {{errorMessage}}
+      {{#if errorMessage}}
+        <div class="alert alert-danger" role="alert">
+            <p>{{errorMessage}}</p>
+        </div>
+      {{/if}}
+      {{#if successMessage}}
+        <div class="alert alert-success" role="alert">
+            <p>{{successMessage}}</p>
+        </div>
+      {{/if}}
+    <form action="/review/{{room._id}}/create" method="POST">
+    <div class="form-group">
+        <label for="review">Review</label>
+        <textarea class="form-control" name="review" id="review" required placeholder="Review" {{#if attempt}}value="{{attempt.name}}"{{/if}}></textarea>
+    </div>
+        {{#if room.yours}}
+            <button type="submit" class="btn btn-secondary btn-lg mt-3" disabled>Post Review</button>
+        {{else}}
+            <button type="submit" class="btn btn-secondary mb-2 mt-3">Post Review</button>
+        {{/if}}
+    </form>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col">
+    <h2>Create Room</h2>
+      {{#if errorMessage}}
+        <div class="alert alert-danger" role="alert">
+            <p>{{errorMessage}}</p>
+        </div>
+      {{/if}}
+      {{#if successMessage}}
+        <div class="alert alert-success" role="alert">
+            <p>{{successMessage}}</p>
+        </div>
+      {{/if}}
+    <form action="/room/create" method="POST">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" id="name" required placeholder="Room Name" {{#if attempt}}value="{{attempt.name}}"{{/if}}>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="textarea" class="form-control" name="description" id="description" required placeholder="Room Description" {{#if attempt}}value="{{attempt.description}}"{{/if}} /> 
+    </div>    
+    <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input type="text" class="form-control" name="imageUrl" id="imageUrl" required placeholder="Image URL" {{#if attempt}}value="{{attempt.imageUrl}}"{{/if}}>
+    </div>    
+        <button type="submit" class="btn btn-info mb-2">Create</button>
+    </form>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container pb-5">
+
+      {{#if flash}}
+        <div class="alert alert-warning" role="alert" onclick="history.back()">
+            <p>{{flash}}</p>
+        </div>
+      {{/if}}    
+
+    <div class="row">
+        <div class="card-group">
+            {{#each roomList}}
+            <div class="col-4">
+                <div class="card h-100">
+                <img class="card-img-top mb-2" src="{{imageUrl}}" id="room-card" alt="Card image">
+                    <div class="card-body">
+                            <h5 class="card-title" id="card-under">{{name}}</h5>
+                            <p class="card-text">{{description}}</p>
+                            <p class="card-text"><small class="text-muted"><b>Owner:</b> {{owner.fullName}}</small></p>
+                            <a href="/room/{{id}}" class="btn btn-primary btn-dark">View Details</a>
+                    </div>
+                </div>
+            </div>            
+            {{/each}}
+        </div>
+    </div>
+</div>
