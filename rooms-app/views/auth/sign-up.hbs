@@ -4,15 +4,20 @@
   <form action="/auth/sign-up" method="POST">
     <div class="mb-3">
       <label for="fullName" class="form-label">Full Name</label>
-      <input type="text" class="form-control" id="fullName" />
+      <input type="text" class="form-control" id="fullName" name="fullName" />
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">E-Mail</label>
-      <input type="email" class="form-control" id="email" />
+      <input type="email" class="form-control" id="email" name="email" />
     </div>
     <div class="mb-3">
       <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password" />
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+      />
     </div>
 
     {{#if errorMessage}}

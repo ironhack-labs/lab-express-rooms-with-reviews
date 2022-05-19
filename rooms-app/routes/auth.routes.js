@@ -63,6 +63,24 @@ router.get("/login", (req, res, next) => {
 
 router.post("/login", async (req, res, next) => {
   const { fullName, email, password } = req.body;
+
+  // check if user provide
+  if (!fullName || !email || !password) {
+    return res.render("auth/login", { errMessage: `Please enter valid data` });
+  }
+
+  // check password strength
+  const passwordRegex =
+    /(?=^.{6,}$)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9]).*/;
+
+  if (!passwordRegex.test(password)) {
+    return res.render("auth/login", {
+      errorMessage: `Password must be at least 8 characters long, includes one or more uppercase and lowercase letters, has at least one digit,
+      has one special character
+      `,
+    });
+  }
+
   try {
     // check if email exists
     const foundUser = await User.findOne({ email });
@@ -73,21 +91,20 @@ router.post("/login", async (req, res, next) => {
     }
 
     //check if password matches
-    const hashedPassword = bcrypt.compareSync(password, users.password);
-    if (hashedPassword) {
-      // if it does exist, change foundUser to object, delete pw
-      const userToObject = foundUser.toObject();
-      delete userToObject.password;
-      // save current user in session
-      req.session.currentUser = userToObject;
-      // define global variable
-      req.app.locals.currentUser = true;
-      res.redirect("/auth/rooms-profile");
-    } else {
-      res.render("auth/login", {
-        errMessage: `Please provide correct password`,
+    const checkPassword = bcrypt.compareSync(password, foundUser.password);
+    if (!checkPassword) {
+      return res.render("auth/login", {
+        errMessage: `Please enter correct password`,
       });
     }
+    // if it does exist, change foundUser to object, delete pw
+    const userToObject = foundUser.toObject();
+    delete userToObject.password;
+    // save current user in session
+    req.session.currentUser = userToObject;
+    // define global variable
+    req.app.locals.currentUser = true;
+    res.redirect("/auth/rooms-profile");
   } catch (error) {
     next(error);
   }
