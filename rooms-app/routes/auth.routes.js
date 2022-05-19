@@ -31,5 +31,40 @@ router.post("/singup", async (req, res, next) => {
         next(error);
     }
 });
+router.get("/signin", (req, res) => {
+    res.render("auth/signin")
+})
+router.post("/signin", async (req, res, next)=>{
+    const { email, password } = req.body
+
+    if (!email || !password) {
+		return res.render("auth/signin", {
+			errorMessage: "Please provide an email and a a password",
+		})
+	}
+    try {
+		const foundUser = await User.findOne({ email })
+
+		if (!foundUser) {
+			return res.render("auth/signin", {
+				errorMessage: "Wrong credentials",
+			})
+		}
+
+		const checkPassword = bcrypt.compareSync(password, foundUser.password)
+		if (!checkPassword) {
+			res.render("auth/signin", {
+				errorMessage: "Wrong credentials",
+			})
+		}
+		const objectUser = foundUser.toObject()
+		delete objectUser.password
+		req.session.currentUser = objectUser
+
+		return res.redirect("/")
+	} catch (e) {
+		next(e)
+	}
+})
 
 module.exports = router;
