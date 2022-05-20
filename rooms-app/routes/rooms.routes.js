@@ -16,7 +16,7 @@ router.post('/create', async (req, res, next) => {
       description,
       imageUrl,
       owner,
-      reviews
+      reviews: []
     });
 
     res.redirect('/rooms');
@@ -45,7 +45,7 @@ router.post('/:id/edit', async (req, res, next) => {
       description,
       imageUrl,
       owner,
-      reviews
+      reviews: []
       },
       {
         new: true
