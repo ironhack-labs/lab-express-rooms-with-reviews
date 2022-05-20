@@ -21,7 +21,7 @@ const app = express();
 require("./config")(app);
 
 const capitalized = require("./utils/capitalized");
-const projectName = "library-project";
+const projectName = "Room-app";
 
 app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
 
