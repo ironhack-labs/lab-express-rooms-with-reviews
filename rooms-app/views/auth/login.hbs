@@ -1,13 +1,31 @@
-<form action="/auth/login" method="POST">
-   <label> Username
-      <input type="text" name="username">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
+<h2>Login</h2>
 
-   <button type="submit">Submit</button>
-</form>
+<div class="container">
+  <form action="/auth/login" method="POST">
+    <div class="mb-3">
+      <label for="fullName" class="form-label">Full Name</label>
+      <input type="text" class="form-control" id="fullName" name="fullName" />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">E-Mail</label>
+      <input type="email" class="form-control" id="email" name="email" />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+      />
+    </div>
+
+    {{#if errMessage}}
+      <p class="error">{{errMessage}}</p>
+    {{/if}}
+
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
 
 {{#if errorMessage}}
    {{errorMessage}}
