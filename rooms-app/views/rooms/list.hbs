@@ -6,8 +6,8 @@
 
       <a href="/rooms/{{this._id}}/update" class="btn btn-dark">Edit</a>
 
-      <form action="">
-        <button>Delete</button>
+      <form action="/rooms/{{this._id}}/delete" method="post">
+        <button type="submit" class="btn btn-warning">Delete</button>
       </form>
 
     </div>

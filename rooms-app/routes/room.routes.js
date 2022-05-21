@@ -71,4 +71,14 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.post("/:id/delete", isLoggedIn, async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await Room.findByIdAndDelete(id);
+    res.redirect("/rooms/list");
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
