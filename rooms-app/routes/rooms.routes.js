@@ -1,25 +1,23 @@
 const router = require ('express').Router();
 const Room = require ('../models/Room.model');
  const { isLoggedIn } = require('../utils/consts'); 
-/* const { route } = require('./index.routes'); */
+ /* const { route } = require('./index.routes');  */
 
 
 
-// criar rooms/rooms-list
 router.get('/', async (req, res, next) => {
-    try {
-      const rooms = await Room.find();
-      res.render('rooms/rooms-list', { rooms, isLoggedIn: req.session.currentUser });
-    } catch (error) {
-      next(error);
-    }
-  })
+  try {
+    const rooms = await Room.find();
+    res.render('rooms/rooms-create', { rooms, isLoggedIn: req.session.currentUser });
+  } catch (error) {
+    next(error);
+  }
+})
 
 
 // Criar / editar / deletar
 
-/*
-   router.get('/create', (req, res, next) => {
+  router.get('/create', (req, res, next) => {
   res.render('rooms/rooms-create');
 })
 
@@ -39,7 +37,7 @@ router.post('/create', async (req, res, next) => {
     next(error);
   }
 })
-
+/*
 router.get('/:id/edit', async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -91,5 +89,5 @@ router.get("/rooms", async (req, res, next) => {
     next(error);
   }
 });
-
-module.exports = router;  */
+*/
+module.exports = router;  

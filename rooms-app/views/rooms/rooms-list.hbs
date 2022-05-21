@@ -1,9 +1,17 @@
 <div class="container">
+<<<<<<< HEAD
   <h1>Rooms list</h1>
   <section id="rooms-container">
     {{#each rooms}}
     <div class="room-row">
       <a href="/room/{{this._id}}">{{this.title}}</a>
+=======
+  <h1>Books list</h1>
+  <section id="books-container">
+    {{#each books}}
+    <div class="book-row">
+      <a href="/books/{{this._id}}">{{this.title}}</a>
+>>>>>>> 6006a211b9d9ec4274f230269379e9b559538b9e
       <div class="action-links">
         {{#if ../isLoggedIn}}
         <a href="/books/{{this._id}}/edit" class="btn btn-dark">Edit</a>
@@ -18,4 +26,8 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<<<<<<< HEAD
 <script src="/js/rooms.js"></script>
+=======
+<script src="/js/books.js"></script>
+>>>>>>> 6006a211b9d9ec4274f230269379e9b559538b9e
