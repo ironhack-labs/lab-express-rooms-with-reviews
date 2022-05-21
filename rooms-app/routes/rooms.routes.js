@@ -35,6 +35,7 @@ router.get('/:id/edit', async (req, res, next) => {
     const { id } = req.params;
     const room = await Room.findById(id);
     res.render('rooms/rooms-edit', room);
+    
   } catch (error) {
     next(error);
   }
@@ -48,9 +49,7 @@ router.post('/:id/edit', async (req, res, next) => {
       {
         name,
       description,
-      imageUrl,
-      owner: req.session.currentUser._id,
-      reviews:[]
+      imageUrl
       },
       {
         new: true
