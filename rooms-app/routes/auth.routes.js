@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
+/* const { loggedInUser } = require("../middlewares/auth.middleware"); */
 
 // sign-up route
 router.get("/sign-up", (req, res, next) => {
@@ -86,8 +87,6 @@ router.post("/login", async (req, res, next) => {
     const foundUser = await User.findOne({ email });
     if (!foundUser) {
       return res.render("auth/login", { errMessage: `User not found` });
-    } else {
-      res.render("auth/rooms-profile");
     }
 
     //check if password matches
@@ -96,15 +95,16 @@ router.post("/login", async (req, res, next) => {
       return res.render("auth/login", {
         errMessage: `Please enter correct password`,
       });
+    } else {
+      // if it does exist, change foundUser to object, delete pw
+      const userToObject = foundUser.toObject();
+      delete userToObject.password;
+      // save current user in session
+      req.session.currentUser = userToObject;
+      // define global variable
+      req.app.locals.currentUser = true;
+      res.redirect("/rooms/list");
     }
-    // if it does exist, change foundUser to object, delete pw
-    const userToObject = foundUser.toObject();
-    delete userToObject.password;
-    // save current user in session
-    req.session.currentUser = userToObject;
-    // define global variable
-    req.app.locals.currentUser = true;
-    res.redirect("/auth/rooms-profile");
   } catch (error) {
     next(error);
   }

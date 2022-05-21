@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Update {{name}}</h2>
+  <form action="/rooms/{{_id}}/update" method="post">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        value="{{name}}"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        name="description"
+        value="{{description}}"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="pictureUrl" class="form-label">Picture</label>
+      <input
+        type="text"
+        class="form-control"
+        id="pictureUrl"
+        name="pictureUrl"
+        value="{{pictureUrl}}"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>

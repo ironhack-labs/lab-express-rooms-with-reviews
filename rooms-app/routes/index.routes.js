@@ -5,7 +5,10 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-const roomsApp = require("./auth.routes");
-router.use("/auth", roomsApp);
+const authApp = require("./auth.routes");
+router.use("/auth", authApp);
+
+const roomApp = require("./room.routes");
+router.use("/rooms", roomApp);
 
 module.exports = router;

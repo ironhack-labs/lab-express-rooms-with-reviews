@@ -1,4 +1,4 @@
-const { schema, Model, Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const roomSchema = new Schema({
   name: { type: String },
@@ -8,5 +8,6 @@ const roomSchema = new Schema({
   reviews: [],
 });
 
-const Room = model("Room", roomSchema);
+const Room = model("Rooms", roomSchema);
+
 module.exports = Room;

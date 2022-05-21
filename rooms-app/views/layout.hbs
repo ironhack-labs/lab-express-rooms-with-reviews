@@ -13,22 +13,41 @@
     />
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
-  <div class="navbar">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="/auth/sign-up">Sign-up</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="/auth/login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="#">Logout</a>
-      </li>
-    </ul>
-  </div>
 
   <body>
 
+    <div class="navbar">
+      <ul class="nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            href="/auth/sign-up"
+          >Sign-up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/auth/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Logout</a>
+        </li>
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Dropdown button
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="/rooms/create">Create</a></li>
+            <li><a class="dropdown-item" href="/rooms/update">Update</a></li>
+          </ul>
+        </div>
+      </ul>
+    </div>
     {{{body}}}
 
     <script
