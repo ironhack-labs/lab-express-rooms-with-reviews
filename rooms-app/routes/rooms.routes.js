@@ -3,7 +3,12 @@ const Room = require('../models/Room.model');
 const User = require("../models/User.model");
 const Review = require("../models/Reviews.model");
 
-router.get('/create', async (req, res, next) => {
+const isLoggedIn = require("../middlewares/isLoggedIn.js");
+const isOwner = require('../middlewares/isOwner');
+
+
+
+router.get('/create', isLoggedIn, async (req, res, next) => {
   try {
     const owner = await User.find();
   res.render('rooms/rooms-create', { owner });
@@ -12,7 +17,7 @@ router.get('/create', async (req, res, next) => {
   }
 });
 
-router.post('/create', async (req, res, next) => {
+router.post('/create', isLoggedIn, async (req, res, next) => {
   try {
     const { name, description, imageUrl } = req.body;
     const newRoom = await Room.create({
@@ -24,13 +29,13 @@ router.post('/create', async (req, res, next) => {
     });
     console.log(newRoom); 
   
-    res.redirect('/rooms');
+    res.redirect('/create');
   } catch (error) {
     next(error);
   }
 })
 
-router.get('/:id/edit', async (req, res, next) => {
+router.get('/:id/edit', isOwner, async (req, res, next) => {
   try {
     const { id } = req.params;
     const room = await Room.findById(id);
@@ -41,7 +46,7 @@ router.get('/:id/edit', async (req, res, next) => {
   }
 })
 
-router.post('/:id/edit', async (req, res, next) => {
+router.post('/:id/edit', isOwner, async (req, res, next) => {
   try {
     const { id } = req.params;
     const { name, description, imageUrl} = req.body;
@@ -49,19 +54,20 @@ router.post('/:id/edit', async (req, res, next) => {
       {
         name,
       description,
-      imageUrl
+      imageUrl,
+      
       },
       {
         new: true
       });
-    
+      
       res.redirect('/rooms');
   } catch (error) {
     next(error);
   }
 })
 
-router.post('/:id/delete', async (req, res, next) => {
+router.post('/:id/delete', isOwner, async (req, res, next) => {
   try {
       const { id } = req.params;
       await Room.findByIdAndDelete(id);
