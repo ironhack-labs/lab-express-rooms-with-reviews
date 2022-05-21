@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Room = require('../models/Room.model');
+const User = require("../models/User.model");
 
 router.get('/create', (req, res, next) => {
   res.render('rooms/rooms-create');
@@ -8,14 +9,14 @@ router.get('/create', (req, res, next) => {
 router.post('/create', async (req, res, next) => {
   try {
     const { name, description, imageUrl, owner, reviews } = req.body;
-    await Room.create({
+    const newRoom = await Room.create({
       name,
       description,
       imageUrl,
       owner,
       reviews: []
     });
-
+    console.log(newRoom); 
     res.redirect('/rooms');
   } catch (error) {
     next(error);
@@ -48,7 +49,7 @@ router.post('/:id/edit', async (req, res, next) => {
         new: true
       });
     
-      res.redirect(`/rooms/${id}`);
+      res.redirect('/rooms');
   } catch (error) {
     next(error);
   }
@@ -67,7 +68,9 @@ router.post('/:id/delete', async (req, res, next) => {
 
 router.get("/rooms", async (req, res, next) => {
   try {
-    const rooms = await Room.find().populate('owner').populate('reviews');
+    const rooms = await Room.find()
+    .populate('owner')
+    .populate('reviews')
     res.render("rooms/rooms-list", { rooms });
   } catch(error) {
     next(error);

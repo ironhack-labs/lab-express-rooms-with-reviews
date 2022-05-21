@@ -2,6 +2,10 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const User = require("../models/User.model");
 
+
+const displaySignup = (req, res) => res.render("auth/signup");
+
+
 router.get("/logout", (req, res) => {
   req.session.destroy((error) => {
     if (error) {
@@ -13,7 +17,6 @@ router.get("/logout", (req, res) => {
   });
 });
 
-const displaySignup = (req, res) => res.render("auth/signup");
 router.get("/signup", displaySignup);
 
 router.post("/signup", async (req, res, next) => {
@@ -42,6 +45,8 @@ router.post("/signup", async (req, res, next) => {
     next(error);
   }
 });
+
+
 router.get("/signin", (req, res) => {
   res.render("auth/signin");
 });
@@ -55,7 +60,6 @@ router.post("/signin", async (req, res, next) => {
   }
   try {
     const foundUser = await User.findOne({ email });
-
     if (!foundUser) {
       res.render("auth/signin", {
         errorMessage: "Wrong credentials",
