@@ -2,6 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const User = require("../models/User.model");
 
+
 const displaySignup = (req, res) => res.render("auth/signup");
 
 
@@ -52,15 +53,6 @@ router.get("/signin", (req, res) => {
 router.post("/signin", async (req, res, next) => {
   const { email, password } = req.body;
 
-<<<<<<< HEAD
-    if (!email || !password) {
-		return res.render("auth/signin", {
-			errorMessage: "Please provide an email and a a password",
-		})
-	}
-    try {
-		const foundUser = await User.findOne({ email });
-=======
   if (!email || !password) {
     res.render("auth/signin", {
       errorMessage: "Please provide an email and a a password",
@@ -68,25 +60,12 @@ router.post("/signin", async (req, res, next) => {
   }
   try {
     const foundUser = await User.findOne({ email });
->>>>>>> c491ade836ab148d4f5ce2a0a30412c04c9d7adb
-
     if (!foundUser) {
       res.render("auth/signin", {
         errorMessage: "Wrong credentials",
       });
     }
 
-<<<<<<< HEAD
-		const checkPassword = bcrypt.compareSync(password, foundUser.password);
-		if (!checkPassword) {
-			res.render("auth/signin", {
-				errorMessage: "Wrong credentials",
-			})
-		}
-		const objectUser = foundUser.toObject();
-		delete objectUser.password;
-		req.session.currentUser = objectUser;
-=======
     const checkPassword = bcrypt.compareSync(password, foundUser.password);
     console.log(checkPassword);
     if (!checkPassword) {
@@ -97,13 +76,11 @@ router.post("/signin", async (req, res, next) => {
       const objectUser = foundUser.toObject();
       delete objectUser.password;
       req.session.currentUser = objectUser;
-      console.log(objectUser);
       res.redirect("/");
     }
   } catch (e) {
     next(e);
   }
 });
->>>>>>> c491ade836ab148d4f5ce2a0a30412c04c9d7adb
 
 module.exports = router;

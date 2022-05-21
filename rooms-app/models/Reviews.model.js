@@ -5,6 +5,6 @@ const reviewSchema = new Schema({
     comment: { type: String, maxlength: 200 }
   });
 
-  const Review = model("Review", userSchema);
+const Review = model("Review", reviewSchema);
 
 module.exports = Review;
