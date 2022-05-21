@@ -67,7 +67,9 @@ router.post('/:id/delete', async (req, res, next) => {
 
 router.get("/rooms", async (req, res, next) => {
   try {
-    const rooms = await Room.find().populate('owner').populate('reviews');
+    const rooms = await Room.find()
+    .populate('owner')
+    .populate('reviews');
     res.render("rooms/rooms-list", { rooms });
   } catch(error) {
     next(error);
