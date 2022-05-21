@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>{{name}} details</h1>
+  <hr>
+
+  <div class="row">
+    <div class="col-8">
+      <h3>Room Details</h3>
+      <p>Description: {{description}}</p>
+      <p>Reviews: {{reviews}}</p>
+    </div>
+    <div class="col-4">
+      <h3>Room</h3>
+      <img src="{{room.pictureUrl}}" alt="room-img">
+      <p>{{room.name}} {{room.description}} ({{room.reviews}})</p>
+    </div>
+  </div>
+
+  <hr>
+  <a href="/books">Go back to list</a>
+
+</div>
