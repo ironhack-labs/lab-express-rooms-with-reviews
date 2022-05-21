@@ -36,8 +36,18 @@ app.use("/", index); */
 const index = require("./routes/index.routes");
 app.use("/", index);
 
+<<<<<<< HEAD
+=======
+
+
+const authRoutes = require("./routes/auth.routes");
+app.use("/auth", authRoutes);
+>>>>>>> 57aa174112f55541e1b40c8800c15c51b84ceb6d
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
+
+
+
 
 module.exports = app;
