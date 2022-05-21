@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1>Create rooms</h1>
+
+            <hr>
+
+            <form action="/rooms/create" method="POST">
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input required type="text" class="form-control" id="name" name="name">
+                </div>
+
+                <div class="mb-3">
+                    <label for="imageUrl" class="form-label">imageUrl</label>
+                    <input type="text" class="form-control" id="imageUrl" name="imageUrl">
+                </div>
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">owner</label>
+                    <input type="text" class="form-control" id="name" name="owner">
+                </div>
+
+                <div class="mb-3">
+                    <label for="reviews" class="form-label">reviews</label>
+                    <input type="text" class="form-control" id="reviews" name="reviews">
+                </div>
+
+            
+
+
+                <button type="submit" class="btn btn-dark">Create new room</button>
+                <a href="/" class="btn btn-dark">Go back</a>
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
