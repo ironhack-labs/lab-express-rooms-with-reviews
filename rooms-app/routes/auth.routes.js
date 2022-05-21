@@ -72,7 +72,6 @@ router.post("/signin", async (req, res, next) => {
       const objectUser = foundUser.toObject();
       delete objectUser.password;
       req.session.currentUser = objectUser;
-      console.log(objectUser);
       res.redirect("/");
     }
   } catch (e) {
