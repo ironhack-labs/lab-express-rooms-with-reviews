@@ -3,9 +3,14 @@ const Room = require('../models/Room.model');
 const User = require("../models/User.model");
 const Review = require("../models/Reviews.model");
 
-router.get('/create', (req, res, next) => {
-  res.render('rooms/rooms-create');
-})
+router.get('/create', async (req, res, next) => {
+  try {
+    const owner = await User.find();
+  res.render('rooms/rooms-create', { owner });
+  } catch(error) {
+    next(error);
+  }
+});
 
 router.post('/create', async (req, res, next) => {
   try {
@@ -18,6 +23,7 @@ router.post('/create', async (req, res, next) => {
       reviews:[]
     });
     console.log(newRoom); 
+  
     res.redirect('/rooms');
   } catch (error) {
     next(error);
