@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Room = require('../models/Room.model');
 const User = require("../models/User.model");
+const Review = require("../models/Reviews.model");
 
 router.get('/create', (req, res, next) => {
   res.render('rooms/rooms-create');
