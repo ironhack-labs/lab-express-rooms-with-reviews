@@ -9,13 +9,13 @@ router.get('/create', (req, res, next) => {
 
 router.post('/create', async (req, res, next) => {
   try {
-    const { name, description, imageUrl, owner, reviews } = req.body;
+    const { name, description, imageUrl } = req.body;
     const newRoom = await Room.create({
       name,
       description,
       imageUrl,
-      owner,
-      reviews: []
+      owner: req.session.currentUser._id,
+      reviews:[]
     });
     console.log(newRoom); 
     res.redirect('/rooms');
@@ -37,14 +37,14 @@ router.get('/:id/edit', async (req, res, next) => {
 router.post('/:id/edit', async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { name, description, imageUrl, owner, reviews } = req.body;
+    const { name, description, imageUrl} = req.body;
     await Room.findByIdAndUpdate(id,
       {
         name,
       description,
       imageUrl,
-      owner,
-      reviews: []
+      owner: req.session.currentUser._id,
+      reviews:[]
       },
       {
         new: true
