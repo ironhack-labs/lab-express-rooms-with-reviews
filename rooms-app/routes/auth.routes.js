@@ -4,24 +4,19 @@ const User = require("../models/User.model");
 const isLoggedOut = require("../middlewares/isLoggedOut");
 const isLoggedIn = require("../middlewares/isLoggedIn");
 
-
-
 const displaySignup = (req, res) => res.render("auth/signup");
-
 
 
 router.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((error) => {
     if (error) {
       const errorMessage = error.message;
-      res.render("auth/logout", { errorMessage });
-      return;
+       res.render("auth/logout", { errorMessage });
+       return;
     }
     res.redirect("/");
   });
 });
-
-
 
 router.get("/signup", displaySignup);
 
