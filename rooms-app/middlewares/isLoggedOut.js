@@ -2,8 +2,8 @@ const isLoggedOut = (req, res, next) => {
 	
 	if (req.session.currentUser) {
 		return res.redirect("/");
-	}else{
-	return next();
-}};
+	}
+	next();
+};
 
 module.exports = isLoggedOut;
