@@ -8,7 +8,7 @@ const Room = require ('../models/Room.model');
 router.get('/', async (req, res, next) => {
   try {
     const rooms = await Room.find();
-    res.render('rooms/rooms-create', { rooms, isLoggedIn: req.session.currentUser });
+    res.render('rooms/rooms-list', { rooms, isLoggedIn: req.session.currentUser });
   } catch (error) {
     next(error);
   }
@@ -21,7 +21,32 @@ router.get('/', async (req, res, next) => {
   res.render('rooms/rooms-create');
 })
 
+
+
+
+
 router.post('/create', async (req, res, next) => {
+  try {
+    const { name, description, imageUrl, owner, reviews } = req.body;
+    await Room.create({
+      name,
+      description,
+      imageUrl,
+      owner,
+      reviews: []
+    });
+
+    res.redirect('/rooms');
+  } catch (error) {
+    next(error);
+  }
+})
+
+router.get('/list', (req, res, next) => {
+  res.render('rooms/rooms-list');
+})
+
+router.post('/list', async (req, res, next) => {
   try {
     const { name, description, imageUrl, owner, reviews } = req.body;
     await Room.create({
