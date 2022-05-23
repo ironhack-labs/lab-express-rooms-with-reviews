@@ -1,10 +1,10 @@
 <div class="container">
   <h2>Rooms</h2>
-  {{#each rooms}}
     <div class="room-col">
+  {{#each rooms}}
       <a href="/rooms/{{this._id}}">{{this.name}}</a>
 
-      <a href="/rooms/{{this._id}}/update" class="btn btn-dark">Edit</a>
+      <a href="/rooms/{{this._id}}/edit" class="btn btn-dark">Edit</a>
 
       <form action="/rooms/{{this._id}}/delete" method="post">
         <button type="submit" class="btn btn-warning">Delete</button>

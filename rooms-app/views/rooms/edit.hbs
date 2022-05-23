@@ -1,6 +1,6 @@
 <div class="container">
-  <h2>Update {{name}}</h2>
-  <form action="/rooms/{{_id}}/update" method="post">
+  <h2>Edit and Update {{room.name}}</h2>
+  <form action="/rooms/{{room._id}}/edit" method="post">
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
       <input
@@ -8,7 +8,7 @@
         class="form-control"
         id="name"
         name="name"
-        value="{{name}}"
+        value="{{room.name}}"
       />
     </div>
 
@@ -19,7 +19,7 @@
         class="form-control"
         id="description"
         name="description"
-        value="{{description}}"
+        value="{{room.description}}"
       />
     </div>
 
@@ -30,10 +30,10 @@
         class="form-control"
         id="pictureUrl"
         name="pictureUrl"
-        value="{{pictureUrl}}"
+        value="{{room.pictureUrl}}"
       />
     </div>
 
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-dark">Update</button>
   </form>
 </div>

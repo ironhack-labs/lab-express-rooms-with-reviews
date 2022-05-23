@@ -1,14 +1,13 @@
-require("../db")
-const rooms = require("../data/data")
-const Room = require("../models/Rooms.model")
+const Room = require("../models/Rooms.model");
+const rooms = require("../data/data");
+require("../db");
 
-const createRooms = async = () => {
-  try{
-    await Room.create(rooms)
-    console.log(`you created ${rooms.length} rooms`)
-  } catch(error){
-    console.log(error)
+const createRooms = async () => {
+  try {
+    await Room.create(rooms);
+  } catch (error) {
+    console.log(error);
   }
-}
+};
 
-createRooms()
+createRooms();

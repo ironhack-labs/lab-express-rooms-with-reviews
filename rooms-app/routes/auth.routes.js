@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
-/* const { loggedInUser } = require("../middlewares/auth.middleware"); */
+const Review = require("../models/Review.model");
 
 // sign-up route
 router.get("/sign-up", (req, res, next) => {
