@@ -1,7 +1,10 @@
 const router = require("express").Router()
 
-router.get("/", (req, res) =>{
-    res.render("comments")
-})
+const Review = require("../models/Reviews.model");
+const isLoggedIn = require("../middleware/isLoggedIn.js");
+
+router.get("/rooms", isLoggedIn, (req, res) =>{
+   res.render("auth/comments")
+});
 
 module.exports = router
