@@ -1,0 +1,16 @@
+<div class="container">
+  <form action="/reviews/{{_id}}" method="post">
+    <h2>New Review</h2>
+    <label for="user">Name</label>
+    <input type="text" name="user" id="user" placeholder="your name" />
+    <br />
+    <label for="room-description">How was your experience?</label>
+    <br />
+    <textarea name="comment" id="" cols="50" rows="10"></textarea>
+    <br />
+  </form>
+  <form action="/rooms/list" method="post">
+    <button type="submit" class="btn btn-dark">Send Review</button>
+  </form>
+
+</div>

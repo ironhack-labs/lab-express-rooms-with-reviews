@@ -6,7 +6,7 @@ const { isLoggedIn } = require("../middlewares/auth.middleware");
 
 router.get("/list", async (req, res, next) => {
   try {
-    const rooms = await Room.find().populate("reviews");
+    const rooms = await Room.find();
     res.render("rooms/list", { rooms, loggedInUser: req.session.currentUser });
   } catch (error) {
     next(error);
@@ -19,16 +19,15 @@ router.get("/create", isLoggedIn, (req, res, next) => {
 
 router.post("/create", async (req, res, next) => {
   // get user id from session
-  /* const userId = req.session.currentUser._id; */
+  const userId = req.session.currentUser._id;
 
-  const { name, description, imageUrl, owner, reviews } = req.body;
+  const { name, description, imageUrl, owner } = req.body;
   try {
     await Room.create({
       name,
       description,
       imageUrl,
       owner: userId,
-      reviews,
     });
     res.redirect("/rooms/list");
   } catch (error) {
