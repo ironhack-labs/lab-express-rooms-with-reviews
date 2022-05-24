@@ -1,13 +1,16 @@
 const router = require("express").Router();
 const Room = require("../models/Rooms.model");
-/* const Review = require("../models/Review.model"); */
+const Review = require("../models/Review.model");
 const bcrypt = require("bcryptjs");
 const { isLoggedIn } = require("../middlewares/auth.middleware");
 
 router.get("/list", async (req, res, next) => {
   try {
     const rooms = await Room.find();
-    res.render("rooms/list", { rooms, loggedInUser: req.session.currentUser });
+    res.render("rooms/list", {
+      rooms,
+      loggedInUser: req.session.currentUser,
+    });
   } catch (error) {
     next(error);
   }
@@ -30,16 +33,6 @@ router.post("/create", async (req, res, next) => {
       owner: userId,
     });
     res.redirect("/rooms/list");
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.get("/:id", async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const rooms = await Room.findById(id);
-    res.render("rooms/room-details", rooms);
   } catch (error) {
     next(error);
   }
@@ -74,6 +67,19 @@ router.post("/:id/edit", async (req, res, next) => {
 
     res.redirect("/rooms/list");
   } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const rooms = await Room.findById(id).populate("reviews");
+    console.log(rooms);
+    //const myReviews = await Review.find({ _id });
+    res.render("rooms/room-details", { rooms });
+  } catch (error) {
+    console.log(error);
     next(error);
   }
 });

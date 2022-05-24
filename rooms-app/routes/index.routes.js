@@ -8,10 +8,11 @@ router.get("/", (req, res, next) => {
 const auths = require("./auth.routes");
 router.use("/auth", auths);
 
+console.log("before rooms");
 const rooms = require("./room.routes");
 router.use("/rooms", rooms);
-
+console.log("after rooms");
 const reviews = require("./review.routes");
-router.use("/reviews", reviews);
+router.use("/rooms", reviews);
 
 module.exports = router;

@@ -1,29 +1,40 @@
 const router = require("express").Router();
 const Review = require("../models/Review.model");
+const Room = require("../models/Rooms.model");
 /* const { isLoggedIn } = require("../middlewares/auth.middleware"); */
 
-router.get("/", (req, res, next) => {
+/* router.get("/", (req, res, next) => {
   res.render("reviews");
+}); */
+
+router.get("/:id/create-review", (req, res, next) => {
+  const { id } = req.params;
+  res.render("reviews/create-review", { id });
 });
 
-router.get("/create-review", (req, res, next) => {
-  res.render("reviews/create-review");
-});
-
-router.post("/create-review", async (req, res, next) => {
-  const { user, comment } = req.body;
+router.post("/:id/create-review", async (req, res, next) => {
+  const { id } = req.params;
+  const { comment } = req.body;
   try {
     const newReview = Review.create({
-      user,
+      user: req.session.currentUser_id,
       comment,
     });
-    res.redirect("/rooms/list");
+    /* const addReviewToRoom = Room.findById(id).populate("reviews"); */
+    const addReviewToRoom = Room.findByIdAndUpdate(
+      id,
+      {
+        comment,
+      },
+      { new: true }
+    );
+    res.redirect(`/rooms/${id}`);
   } catch (error) {
     next(error);
   }
 });
 
-router.get("/:id", async (req, res, next) => {
+/* router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
     const oneReview = Review.findById(id);
@@ -31,6 +42,6 @@ router.get("/:id", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-});
+}); */
 
 module.exports = router;
