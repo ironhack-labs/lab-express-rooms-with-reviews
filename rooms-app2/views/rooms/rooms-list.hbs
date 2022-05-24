@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Rooms list</h1>
+  <section id="rooms-container">
+    {{#each rooms}}
+    <div class="room-row">
+      <a href="/rooms/{{this._id}}">{{this.name}}</a>
+      <div class="action-links">
+        {{#if ../isLoggedIn}}
+        <a href="/rooms/{{this._id}}/edit" class="btn btn-dark">Edit</a>
+        {{/if}}
+        <button type="submit" class="btn btn-warning delete-button">Delete <span class="hide">{{this._id}}</span></button>
+      </div>
+    </div>
+    {{/each}}
+  </section>
+
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/rooms.js"></script>
