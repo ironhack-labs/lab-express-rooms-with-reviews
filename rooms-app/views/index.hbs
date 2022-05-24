@@ -1,12 +1,14 @@
 <h1>{{appTitle}} 🚀</h1>
 
 <ul>
+
     {{#if isLoggedIn}}
+   
       <li><a href="/logout">Logout</a></li>
-    <li><a href="/create">Create a room</a></li>
+    <li><a href="/create">Create a new room</a></li>
     {{else}}
-    <li><a href="/signup">Signup</a></li>
-    <li><a href="/signin">Signin</a></li>
+    <li><a href="/signup">Signup if you a not registered</a></li>
+    <li><a href="/signin">Signin if your login</a></li>
     {{/if}}
-    <li><a href="/rooms">See the rooms</a></li>
+    <li><a href="/rooms">See the rooms available</a></li>
 </ul>
