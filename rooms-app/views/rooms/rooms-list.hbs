@@ -1,0 +1,13 @@
+<h1>Rooms</h1>
+{{#each rooms}}
+<h2>{{this.name}}</h2>
+<P>{{this.description}}</P>
+<img src="{{this.imageUrl}}" alt="{{this.name}}-pic">
+<p>{{this.reviews}}</p>
+{{#if IsOwner}}
+<a href="/{{this._id}}/edit" class="btn btn-dark">Edit</a>
+<form action="/{{this._id}}/delete" method="post">
+    <button type="submit" class="btn btn-warning">Delete</button>
+</form>
+{{/if}}
+{{/each}}
