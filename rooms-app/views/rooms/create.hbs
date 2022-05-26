@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Create a new Room</h2>
+  <form action="/rooms/create" method="post">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" />
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        name="description"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="pictureUrl" class="form-label">Picture</label>
+      <input
+        type="text"
+        class="form-control"
+        id="pictureUrl"
+        name="pictureUrl"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create new Room</button>
+  </form>
+</div>
