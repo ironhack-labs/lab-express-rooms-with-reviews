@@ -16,15 +16,14 @@ router.post("/:id/create-review", async (req, res, next) => {
   const { id } = req.params;
   const { comment } = req.body;
   try {
-    const newReview = Review.create({
+    const newReview = await Review.create({
       user: req.session.currentUser_id,
       comment,
     });
-    /* const addReviewToRoom = Room.findById(id).populate("reviews"); */
-    const addReviewToRoom = Room.findByIdAndUpdate(
+    await Room.findByIdAndUpdate(
       id,
       {
-        comment,
+        $addToSet: { reviews: newReview._id },
       },
       { new: true }
     );
