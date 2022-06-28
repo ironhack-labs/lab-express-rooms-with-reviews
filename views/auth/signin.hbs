@@ -1,0 +1,20 @@
+<h2>sign in to create an account </h2>
+
+ <form action="/login" method="Post">  
+        <div class="container">   
+            <label>Username : </label>   
+            <input type="text" placeholder="Enter Username" name="username" required>  
+            <label>Password : </label>   
+            <input type="password" placeholder="Enter Password" name="password" required>  
+            <button type="submit">login</button>   
+{{#if errorMessage}}
+      <p class='error'>{{errorMessage}}</p>
+    {{/if}}
+</form>
+
+<div>
+  {{#if error}}
+    <span>{{error}}</span>
+  {{/if}}
+
+</div>
