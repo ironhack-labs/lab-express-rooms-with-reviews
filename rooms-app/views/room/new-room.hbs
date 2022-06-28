@@ -3,7 +3,7 @@
   <h1>Create a room my friend!</h1>
   <!-- <img src= "../images/no-privacy1.gif" width="800" alt="funny gif" /> -->
 
-  <form action="/userProfile/rooms/add" method="POST" >
+  <form action="/userProfile/rooms/add" method="POST" enctype="multipart/form-data">
 
     <label>Name:</label>
     <input type="text" name="name" required />
@@ -12,7 +12,7 @@
     <textarea type="text" name="description" required></textarea>
 
     <label>Image:</label>
-    <input type="text" name="imageUrl" />
+    <input type="file" name="room-image" />
 
     <button type="submit">Create</button>
 

@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const Room = require("../models/Room.model");
 
 // import library that allows us to upload files
-//const fileUploader = require("../config/cloudinary")
+const fileUploader = require("../config/cloudinary")
 
 // require auth middleware
 const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
@@ -15,8 +15,8 @@ router.get("/userProfile/rooms/add", isLoggedIn, (req, res) => {
   res.render("room/new-room", { userInSession: req.session.currentUser });
 });
 
-//fileUploader.single('imageUrl')
-router.post("userProfile/rooms/add", (req, res) => {
+//
+router.post("userProfile/rooms/add", fileUploader.single('room-image'), (req, res) => {
   //Get the user id from the session
   const userId = req.session.currentUser._id;
 
@@ -28,7 +28,7 @@ router.post("userProfile/rooms/add", (req, res) => {
   Room.create({
     name,
     description,
-    imageUrl,
+    imageUrl: req.file.path,
     owner: userId,
   })
     .then((createdRoom) => {
