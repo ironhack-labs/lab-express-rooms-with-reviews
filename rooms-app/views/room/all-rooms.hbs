@@ -1,18 +1,25 @@
-<h1>List of all rooms</h1>
+<br />
+<h4>List of all rooms</h4>
+
+<hr />
 
 {{#each rooms}}
 
   <div class="room-card">
 
-    <h2>Name: {{name}}</h2>
+    <h5>Name: {{name}}</h5>
 
     <p>Description: {{description}}</p>
 
     <img class="room-img" src="{{imageUrl}}" alt="{{name}}" />
 
-    <h4>Owner: {{owner.email}}</h4>
+    <br />
+
+    <h6>Owner: {{owner}}</h6>
 
     <a href="/rooms/{{_id}}">See more</a>
+
+    <hr />
   </div>
 
 {{else}}
