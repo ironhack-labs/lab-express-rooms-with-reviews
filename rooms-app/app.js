@@ -49,6 +49,8 @@ app.use("/", privateRoutes);
 const roomsRoutes = require("./routes/rooms.routes");
 app.use("/", roomsRoutes);
 
+const roomsListRoutes = require("./routes/rooms-list.routes");
+app.use("/", roomsListRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
