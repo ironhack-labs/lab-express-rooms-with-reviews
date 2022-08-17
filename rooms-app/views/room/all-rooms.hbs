@@ -1,0 +1,29 @@
+<br />
+<h4>List of all rooms</h4>
+
+<hr />
+
+{{#each rooms}}
+
+  <div class="room-card">
+
+    <h5>Name: {{name}}</h5>
+
+    <p>Description: {{description}}</p>
+
+    <img class="room-img" src="{{imageUrl}}" alt="{{name}}" />
+
+    <br />
+
+    <h6>Owner: {{owner}}</h6>
+
+    <a href="/rooms/{{_id}}">See more</a>
+
+    <hr />
+  </div>
+
+{{else}}
+
+  <p>There are no rooms yet!</p>
+
+{{/each}}

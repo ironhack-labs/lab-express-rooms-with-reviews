@@ -1,0 +1,21 @@
+{{#if userInSession}}
+  <h2>Welcome, {{userInSession.username}}!</h2>
+  <h1>This is your main page my friend!</h1>
+  <img src="../images/cat.jpg" width="800" alt="Cat" />
+
+  <br />
+  <br />
+
+  <button>
+    <a href="/">Home</a>
+  </button>
+  <br />
+  <br />
+
+  <button>
+    <a href="/userProfile">Back</a>
+  </button>
+
+{{else}}
+  <p>Still no logged in user, sorry!</p>
+{{/if}}

@@ -1,0 +1,36 @@
+{{#if userInSession}}
+  <h2>Welcome, {{userInSession.username}}!</h2>
+  <h1>Create a room my friend!</h1>
+  <!-- <img src= "../images/no-privacy1.gif" width="800" alt="funny gif" /> -->
+
+  <form action="/userProfile/rooms/add" method="POST" enctype="multipart/form-data">
+
+    <label>Name:</label>
+    <input type="text" name="name" required />
+
+    <label>Description: </label>
+    <textarea type="text" name="description" required></textarea>
+
+    <label>Image:</label>
+    <input type="file" name="room-image" required />
+
+    <button type="submit">Create</button>
+
+  </form>
+
+  <br />
+  <br />
+
+  <button>
+    <a href="/">Home</a>
+  </button>
+  <br />
+  <br />
+
+  <button>
+    <a href="/rooms">Back</a>
+  </button>
+
+{{else}}
+  <p>Still no logged in user, sorry!</p>
+{{/if}}
