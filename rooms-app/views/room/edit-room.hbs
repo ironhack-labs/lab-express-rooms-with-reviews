@@ -1,0 +1,24 @@
+<div id="form">
+  <h2>Edit room</h2>
+  <form action="/room/{{foundRoom.id}}/edit" method="POST">
+ 
+    <label> Name
+      <input type="text" name="name" value="{{foundRoom.name}}"/>
+    </label>
+ 
+    <label> Description
+      <input type="text" name="description" value="{{foundRoom.description}}"/>
+    </label>
+
+        <label> Image
+      <input type="text" name="image" value="{{foundRoom.image}}"/>
+    </label>
+ 
+    <button type="submit">Edit room</button>
+  </form>
+
+  <form action="/room/{{foundRoom.id}}/delete" method="POST">
+    <button>Delete room</button>
+    </form>
+    <a href="">Write a review</a>
+</div>

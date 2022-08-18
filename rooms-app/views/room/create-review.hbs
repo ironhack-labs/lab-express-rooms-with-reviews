@@ -1,0 +1,19 @@
+
+
+<div>Reviews</div>
+
+{{#each review}}
+<div>
+{{this.comment}}
+</div>
+{{/each}}
+
+  <form action="/room/{{foundRoom.id}}/review" method="POST">
+ 
+    <label> Write a review
+      <input type="text" name="comment"/>
+    </label>
+ 
+    <button type="submit">Submit review</button>
+  </form>
+
