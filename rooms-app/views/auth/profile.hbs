@@ -13,14 +13,16 @@
         <li>{{description}}</li>
         <img src="{{image}}">
 
-        <li>By {{username}}</li>
+        
         <div>
         <a class="edit" href="/room/{{id}}/edit">Edit</a>
         <a class="edit" href="/room/{{id}}/delete">Delete</a>
         <a class="edit" href="/room/{{id}}/review">Reviews</a>
         </div>
         </ul>
+        {{/each }}
+        {{!-- <div>By {{username}}</div> --}}
         <br>
 </div>
-{{/each }}
+
 

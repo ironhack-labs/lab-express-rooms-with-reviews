@@ -19,6 +19,13 @@ const isLoggedOut = (req, res, next) => {
   next();
 };
 
+// const isNotOwnRoom = (req, res, next) => {
+//   if (!req.session.currentUser) {
+//     return res.redirect("/auth/login");
+//   }
+//   next();
+// };
+
 module.exports = {
   isLoggedIn,
   isLoggedOut,

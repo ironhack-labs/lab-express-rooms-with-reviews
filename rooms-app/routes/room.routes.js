@@ -53,25 +53,28 @@ router.get("/:id/delete", (req, res, next) => {
 
 router.get("/:id/review", (req, res, next) => {
   const { id } = req.params;
+
   Room.findById(id)
+    .populate("reviews")
     .then((foundRoom) => {
-      Review.findById();
-      const review = foundRoom.reviews;
-      res.render("room/create-review", { foundRoom, review });
+      let arr = foundRoom.reviews;
+      res.render("room/create-review", { arr, foundRoom });
     })
     .catch((err) => console.log(err));
 });
 
 router.post("/:id/review", (req, res, next) => {
-  const id = req.session.currentUser;
-  const _id = req.params;
+  const idUser = req.session.currentUser;
+  const { id } = req.params;
   const { comment } = req.body;
-  Review.create({ user: id, comment })
+  Review.create({ user: idUser, comment })
     .then((newReview) => {
-      Room.updateOne({ id: _id }, { $push: { reviews: newReview } })
-        .then(() => {})
+      Room.findByIdAndUpdate(id, { $push: { reviews: newReview } })
+        .then((da) => {
+          res.redirect("/auth/profile");
+          console.log(da);
+        })
         .catch((err) => console.log(err));
-      res.redirect("/auth/profile");
     })
     .catch((err) => console.log(err));
 });

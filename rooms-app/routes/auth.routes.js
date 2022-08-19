@@ -9,7 +9,16 @@ const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard");
 
 // HOME  ***********************************************
 router.get("/", (req, res, next) => {
-  res.render("index");
+  const id = req.session.currentUser;
+  console.log(id._id);
+  Room.find()
+    .then((foundRooms) => {
+      let newArr = foundRooms.filter(
+        (element) => element.owner.toString() !== id._id
+      );
+      res.render("index", { newArr });
+    })
+    .catch((err) => console.log(err));
 });
 
 // SIGNUP ***********************************************
@@ -19,7 +28,6 @@ router.get("/signup", (req, res, next) => {
 
 router.post("/signup", (req, res, next) => {
   const { username, email, password } = req.body;
-
   bcrypt
     .genSalt(saltRounds)
     .then((salt) => bcrypt.hash(password, salt))
@@ -45,7 +53,6 @@ router.get("/login", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   const { email, password } = req.body;
-
   // Check for empty fields
   if (email === "" || password === "") {
     res.render("auth/login", {
@@ -74,6 +81,7 @@ router.post("/login", (req, res, next) => {
 // PROFILE  ***********************************************
 router.get("/profile", isLoggedOut, (req, res, next) => {
   const { _id } = req.session.currentUser;
+
   Room.find({ owner: _id })
     .then((foundRooms) => {
       if (req.session.currentUser) {

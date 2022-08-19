@@ -2,11 +2,13 @@
 
 <div>Reviews</div>
 
-{{#each review}}
+{{#each arr}}
 <div>
 {{this.comment}}
 </div>
 {{/each}}
+
+{{!-- {{foundRoom.id}} --}}
 
   <form action="/room/{{foundRoom.id}}/review" method="POST">
  

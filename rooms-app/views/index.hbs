@@ -1,2 +1,21 @@
 <h1>{{appTitle}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
+<p>Your feed</p>
+
+{{#each newArr}}
+<div class="flex-container wrap">
+        <ul>
+        <li value="{{_id}}">{{name}}</li>
+        <li>{{description}}</li>
+        <img src="{{image}}">
+
+        
+        <div>
+        <a class="edit" href="/room/{{id}}/edit">Edit</a>
+        <a class="edit" href="/room/{{id}}/delete">Delete</a>
+        <a class="edit" href="/room/{{id}}/review">Reviews</a>
+        </div>
+        </ul>
+        {{/each }}
+        {{!-- <div>By {{username}}</div> --}}
+        <br>
+</div>
