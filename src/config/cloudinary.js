@@ -14,7 +14,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: "personalities",
+    folder: "rooms",
     resource_type: "image",
   },
 });
