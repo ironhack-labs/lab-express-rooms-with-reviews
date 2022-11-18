@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import routes from "./routes.js";
 import connectToMongoose from "./config/database.js";
 
@@ -12,6 +13,7 @@ class App {
   }
 
   middlewares() {
+    this.server.use(cors());
     this.server.use(express.json());
   }
 
