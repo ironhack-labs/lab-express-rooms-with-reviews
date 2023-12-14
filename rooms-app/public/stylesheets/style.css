@@ -1,0 +1,32 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0; /* Agregamos margen cero para eliminar el margen predeterminado del cuerpo */
+}
+
+a {
+  color: #00b7ff;
+}
+
+h1 {
+  font-size: 28px; /* Ajustamos el tamaño del texto */
+}
+
+.hero-section {
+  background-image: url('https://reversumroomescape.es/wp-content/uploads/2022/06/escape-rooms-madrid.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: #fff;
+  padding: 0; /* Eliminamos el relleno */
+  overflow: hidden; /* Evita el desplazamiento vertical */
+}
+
+.btn-section {
+  background-image: url('https://katharsisroomescape.es/wp-content/uploads/2021/11/escape-room-de-miedo-y-terror-en-Mataro.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  color: #fff;
+  padding: 0; /* Eliminamos el relleno */
+  overflow: hidden; /* Evita el desplazamiento vertical */
+}

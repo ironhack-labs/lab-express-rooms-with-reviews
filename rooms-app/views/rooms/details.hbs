@@ -1,0 +1,14 @@
+<div class="container my-5 d-flex flex-column justify-content-center">
+  <div class="col-12">
+    <img src={{imageUrl}} class="img-thumbnail" alt={{name}} width="200" />
+    <h1 class="mt-3">{{name}}</h1>
+    <p><span class="fw-bold">description:</span> {{description}}</p>
+    <p><span class="fw-bold">description:</span> {{description}}</p>
+    <p>This room has <span class="fw-bold">{{reviews}}</span> reviews</p>
+  </div>
+  <div>
+    <a class="btn btn-success" href="/rooms/{{_id}}/update" style="width: fit-content;"><i data-feather="edit"></i></a>
+    <a class="btn btn-danger" href="/rooms/{{_id}}/delete" style="width: fit-content;"><i data-feather="trash-2"></i></a>
+    <a class="btn btn-secondary" href="/rooms" style="width: fit-content;"><i data-feather="room"></i></a>
+  </div>
+  
