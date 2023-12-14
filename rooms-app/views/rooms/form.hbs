@@ -1,0 +1,49 @@
+{{!-- <div id="login" class="container col-xxl-4">
+  <h1 class="text-center mt-5 mb-4">{{#if book}}Update{{else}}Create{{/if}}</h1>
+  {{#if book}}
+    <h2 class="text-center mb-4 text-secondary">{{book.title}}</h2>
+  {{/if}}
+
+  <form class="container-sm mx-auto" style="max-width: 400px;" action="/books/{{#if book}}{{book._id}}/update{{else}}create{{/if}}" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="title" style="color: #3498db;" class="form-label">Title</label>
+      <input {{#if book}}value="{{book.title}}"{{else}}placeholder="Type title" required{{/if}} type="text" name="title" class="{{#if errors}}is-invalid{{/if}} form-control" id="title" aria-describedby="titleHelp">
+    </div>
+    <div class="mb-3">
+      <label for="author" style="color: #3498db;" class="form-label">Author</label>
+      <input {{#if book}}value="{{book.author}}"{{else}}placeholder="Type author" required{{/if}} type="text" name="author" class="{{#if errors}}is-invalid{{/if}} form-control" id="author">
+    </div>
+    <div class="mb-3">
+      <label for="pages" style="color: #3498db;" class="form-label">Pages</label>
+      <input {{#if book}}value="{{book.pages}}"{{else}}placeholder="Set pages" required{{/if}} type="number" name="pages" class="{{#if errors}}is-invalid{{/if}} form-control" id="pages">
+    </div>
+    <div class="mb-3">
+      <label for="genre" style="color: #3498db;" class="form-label">Genre</label>
+      <select name="genre" class="form-select" aria-label="Default select example">
+        {{#each genreEnumValues}}
+          {{#if ../book}}
+            <option value="{{this}}" {{#isSelected selectValue=this dbValue=../book.genre}}selected{{/isSelected}}>{{this}}</option>
+          {{else}}
+            <option value="{{this}}" {{#isSelected selectValue=this dbValue='Other'}}selected{{/isSelected}}>{{this}}</option>
+          {{/if}}
+        {{/each}}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="image" style="color: #3498db;" class="form-label">Image</label>
+      <input placeholder="Upload an image" type="file" name="image" class="{{#if errors}}is-invalid{{/if}} form-control" id="image">
+    </div>
+    {{#if errors}}
+      <div class="mb-3">
+        <small class="text-danger">{{errors.msg}}</small>
+      </div>
+    {{/if}}
+    {{#if book}}
+      <button type="submit" class="btn btn-success"><i data-feather="edit"></i></button>
+      <a href="/books/{{book._id}}" class="btn btn-secondary"><i data-feather="skip-back"></i></a>
+    {{else}}
+      <button type="submit" class="btn btn-success">Create</button>
+    {{/if}}
+  </form>
+</div>
+ --}}
